@@ -87,8 +87,8 @@ public class AddAssignment extends FragmentActivity implements TimePickerDialog.
     }
 
     public void addAssignment() {
-        if (Title.getText().toString() == "" && Description.getText().toString() == "" &&
-                Subject.getText().toString() == "") {
+        if (Title.getText().toString().isEmpty() && Description.getText().toString().isEmpty() &&
+                Subject.getText().toString().isEmpty()) {
             Toast.makeText(this, "Nothing is filled", Toast.LENGTH_LONG).show();
         } else {
             dbHandler.addAssignment(new Assignment(Title.getText().toString(),
@@ -117,13 +117,13 @@ public class AddAssignment extends FragmentActivity implements TimePickerDialog.
     public void onBackPressed() {
         new AlertDialog.Builder(this)
                 .setTitle("Save assignment?")
-                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
 
                     public void onClick(DialogInterface arg0, int arg1) {
                         addAssignment();
                     }
                 })
-                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                .setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
 
                     public void onClick(DialogInterface arg0, int arg1) {
                         AddAssignment.super.onBackPressed();

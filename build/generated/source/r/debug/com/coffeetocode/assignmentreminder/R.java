@@ -66,7 +66,9 @@ public final class R {
         public static final int drawer_open=0x7f060006;
         public static final int hello_world=0x7f060007;
         public static final int newAssignment=0x7f060008;
-        public static final int reminders=0x7f060009;
+        public static final int no=0x7f060009;
+        public static final int reminders=0x7f06000a;
+        public static final int yes=0x7f06000b;
     }
     public static final class style {
         /** 

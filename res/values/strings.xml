@@ -11,5 +11,7 @@
     <string name="reminders">Reminders</string>
     <string name="addReminder">Add another reminder</string>
     <string name="action_accept">Save</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 
 </resources>
