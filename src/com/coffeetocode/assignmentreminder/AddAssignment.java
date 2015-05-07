@@ -1,7 +1,9 @@
 package com.coffeetocode.assignmentreminder;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
@@ -85,12 +87,17 @@ public class AddAssignment extends FragmentActivity implements TimePickerDialog.
     }
 
     public void addAssignment() {
-        dbHandler.addAssignment(new Assignment(Title.getText().toString(),
-                Description.getText().toString(),
-                (double) c.getTimeInMillis() / 1000,
-                Subject.getText().toString()));
-        Toast.makeText(this, "Assignment saved", Toast.LENGTH_SHORT).show();
-        this.finish();
+        if (Title.getText().toString() == "" && Description.getText().toString() == "" &&
+                Subject.getText().toString() == "") {
+            Toast.makeText(this, "Nothing is filled", Toast.LENGTH_LONG).show();
+        } else {
+            dbHandler.addAssignment(new Assignment(Title.getText().toString(),
+                    Description.getText().toString(),
+                    (double) c.getTimeInMillis() / 1000,
+                    Subject.getText().toString()));
+            Toast.makeText(this, "Assignment saved", Toast.LENGTH_SHORT).show();
+            this.finish();
+        }
     }
 
     @Override
@@ -106,6 +113,15 @@ public class AddAssignment extends FragmentActivity implements TimePickerDialog.
         }
     }
 
+    public void onBackPressed() {
+        if (Title.getText().toString() == "" && Description.getText().toString() == "" &&
+                Subject.getText().toString() == "") {
+            this.finish();
+        } else {
+            createAndShowAlertDialog();
+        }
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -113,5 +129,23 @@ public class AddAssignment extends FragmentActivity implements TimePickerDialog.
         MenuItem options = menu.findItem(R.id.action_settings);
         options.setVisible(false);
         return true;
+    }
+
+    private void createAndShowAlertDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+        builder.setTitle("Save the assignment?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialogInterface, int id) {
+                addAssignment();
+                dialogInterface.dismiss();
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialogInterface, int id) {
+                dialogInterface.dismiss();
+            }
+        });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 }
