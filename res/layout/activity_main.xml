@@ -22,14 +22,21 @@
             android:scrollbars="none" />
     </FrameLayout>
 
-    <ListView
+    <LinearLayout
         android:id="@+id/left_drawer"
         android:layout_width="240dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="#555"
+        android:background="#666"
         android:choiceMode="singleChoice"
         android:divider="@android:color/transparent"
-        android:dividerHeight="0dp" />
+        android:dividerHeight="16dp">
+        <!-- TODO: add sidebar elements here  -->
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:onClick="doToast"
+            android:text="asdfasdf" />
+    </LinearLayout>
 
 </android.support.v4.widget.DrawerLayout>
