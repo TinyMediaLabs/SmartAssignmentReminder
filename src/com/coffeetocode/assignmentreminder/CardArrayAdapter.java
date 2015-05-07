@@ -1,26 +1,21 @@
 package com.coffeetocode.assignmentreminder;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.view.View.OnClickListener;
 import android.widget.Toast;
 
-public class CardArrayAdapter extends ArrayAdapter<Card> {
-    private List<Card> cardList = new ArrayList<Card>();
-    DBHandler dbHandler = new DBHandler(getContext());
+import java.util.ArrayList;
+import java.util.List;
 
-    static class CardViewHolder {
-        TextView title;
-        TextView desc;
-    }
+public class CardArrayAdapter extends ArrayAdapter<Card> {
+    DBHandler dbHandler = new DBHandler(getContext());
+    private List<Card> cardList = new ArrayList<Card>();
 
     public CardArrayAdapter(Context context, int textViewResourceId) {
         super(context, textViewResourceId);
@@ -65,6 +60,7 @@ public class CardArrayAdapter extends ArrayAdapter<Card> {
             viewHolder = new CardViewHolder();
             viewHolder.title = (TextView) row.findViewById(R.id.title);
             viewHolder.desc = (TextView) row.findViewById(R.id.description);
+            viewHolder.subject = (TextView) row.findViewById(R.id.subject);
             row.setTag(viewHolder);
         } else {
             viewHolder = (CardViewHolder) row.getTag();
@@ -72,6 +68,7 @@ public class CardArrayAdapter extends ArrayAdapter<Card> {
         Card card = getItem(position);
         viewHolder.title.setText(card.getTitle());
         viewHolder.desc.setText(card.getDescription());
+        viewHolder.subject.setText(card.getSubject());
 
         ImageButton del = (ImageButton) row.findViewById(R.id.delete_button);
         del.setTag(position);
@@ -81,11 +78,16 @@ public class CardArrayAdapter extends ArrayAdapter<Card> {
             public void onClick(View v) {
                 int pos = Integer.parseInt(v.getTag().toString());
                 remove(pos);
-                // TODO: DELETE FROM DATABASE HERE
                 CardArrayAdapter.this.notifyDataSetChanged();
             }
         });
         return row;
+    }
+
+    static class CardViewHolder {
+        TextView title;
+        TextView desc;
+        TextView subject;
     }
 
 

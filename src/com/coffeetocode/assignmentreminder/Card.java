@@ -4,11 +4,13 @@ public class Card {
     private int ID;
 	private String title;
 	private String description;
+    private String subject;
 
-    public Card(int ID, String title, String description) {
+    public Card(int ID, String title, String description, String subject) {
         this.ID = ID;
         this.title = title;
         this.description = description;
+        this.subject = subject;
     }
 
     public int getID() {
@@ -33,5 +35,13 @@ public class Card {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
     }
 }

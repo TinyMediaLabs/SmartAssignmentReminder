@@ -5,8 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.Toast;
-
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +32,7 @@ public class DBHandler extends SQLiteOpenHelper
     private static final String CARD_ID            = "ID";
     private static final String CARD_TITLE         = "title";
     private static final String CARD_DESCRIPTION   = "description";
+    private static final String CARD_SUBJECT = "subject";
 
     public DBHandler(Context context)
     {
@@ -58,7 +57,8 @@ public class DBHandler extends SQLiteOpenHelper
                 + " ("
                 + CARD_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + CARD_TITLE + " TEXT,"
-                + CARD_DESCRIPTION + " TEXT"
+                + CARD_DESCRIPTION + " TEXT,"
+                + CARD_SUBJECT + " TEXT"
                 + ")";
 
         db.execSQL(CREATE_ASSIGNMENTS_TABLE);
@@ -179,6 +179,7 @@ public class DBHandler extends SQLiteOpenHelper
         ContentValues values = new ContentValues();
         values.put(CARD_TITLE,  card.getTitle());
         values.put(CARD_DESCRIPTION, card.getDescription());
+        values.put(CARD_SUBJECT, card.getSubject());
 
         db.insert(CARDS_TABLE, null, values);
     }
@@ -196,7 +197,7 @@ public class DBHandler extends SQLiteOpenHelper
 
         Cursor cursor = db.query(
                 CARDS_TABLE,
-                new String[] {CARD_ID, CARD_TITLE, CARD_DESCRIPTION},
+                new String[]{CARD_ID, CARD_TITLE, CARD_DESCRIPTION, CARD_SUBJECT},
                 CARD_ID + " = " + String.valueOf(id),
                 null, null, null, null, null);
         if (cursor != null)
@@ -206,7 +207,8 @@ public class DBHandler extends SQLiteOpenHelper
         Card card = new Card(
                 cursor.getInt(0),       //CARD_ID
                 cursor.getString(1),    //CARD_TITLE
-                cursor.getString(2)    //CARD_DESCRIPTION
+                cursor.getString(2),    //CARD_DESCRIPTION
+                cursor.getString(3)     //CARD_SUBJECT
         );
         return card;
 
@@ -229,7 +231,8 @@ public class DBHandler extends SQLiteOpenHelper
                 Card card = new Card(
                         cursor.getInt(0),       //CARD_ID
                         cursor.getString(1),    //CARD_TITLE
-                        cursor.getString(2)    //CARD_DESCRIPTION
+                        cursor.getString(2),    //CARD_DESCRIPTION
+                        cursor.getString(3)     //CARD_SUBJECT
                 );
 
                 cardList.add(card);
