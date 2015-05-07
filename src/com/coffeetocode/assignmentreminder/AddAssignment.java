@@ -10,12 +10,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
 import java.util.Calendar;
-
 import java.util.Locale;
 
 /**
@@ -29,6 +27,7 @@ public class AddAssignment extends FragmentActivity implements TimePickerDialog.
     EditText Subject;
     Calendar c = Calendar.getInstance();
     DBHandler dbHandler = new DBHandler(this);
+    // added a useless comment
 
     public void showTimePickerDialog(View v) {
         TimePickerFragment newFragment = new TimePickerFragment();
