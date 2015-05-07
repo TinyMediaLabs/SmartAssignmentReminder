@@ -113,13 +113,22 @@ public class AddAssignment extends FragmentActivity implements TimePickerDialog.
         }
     }
 
+    @Override
     public void onBackPressed() {
-        if (Title.getText().toString() == "" && Description.getText().toString() == "" &&
-                Subject.getText().toString() == "") {
-            this.finish();
-        } else {
-            createAndShowAlertDialog();
-        }
+        new AlertDialog.Builder(this)
+                .setTitle("Save assignment?")
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        addAssignment();
+                    }
+                })
+                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        AddAssignment.super.onBackPressed();
+                    }
+                }).create().show();
     }
 
     @Override
@@ -129,23 +138,5 @@ public class AddAssignment extends FragmentActivity implements TimePickerDialog.
         MenuItem options = menu.findItem(R.id.action_settings);
         options.setVisible(false);
         return true;
-    }
-
-    private void createAndShowAlertDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
-        builder.setTitle("Save the assignment?");
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialogInterface, int id) {
-                addAssignment();
-                dialogInterface.dismiss();
-            }
-        });
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialogInterface, int id) {
-                dialogInterface.dismiss();
-            }
-        });
-        AlertDialog alertDialog = builder.create();
-        alertDialog.show();
     }
 }
