@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- From: file:/D:/Android/Workspace/AssignmentReminder/res/values/array.xml -->
+    <eat-comment/>
+    <string-array name="drawer_item_names">
+
+        <item>first</item>
+        <item>second</item>
+        <item>third</item>
+        <item>fourth</item>
+        <item>fifth</item>
+        <item>6th</item>
+        <item>7th</item>
+        <item>8th</item>
+        <item>9th</item>
+        <item>10th</item>
+    </string-array>
+    <!-- From: file:/D:/Android/Workspace/AssignmentReminder/res/values/dimens.xml -->
+    <eat-comment/>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_padding">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <!-- From: file:/D:/Android/Workspace/AssignmentReminder/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="action_accept">Save</string>
+    <string name="action_new">Add</string>
+    <string name="action_settings">Settings</string>
+    <string name="addReminder">Add another reminder</string>
+    <string name="app_name">Assignment Reminder</string>
+    <string name="drawer_close">Close the sidebar</string>
+    <string name="drawer_open">Open the sidebar</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="newAssignment">New assignment</string>
+    <string name="reminders">Reminders</string>
+    <!-- From: file:/D:/Android/Workspace/AssignmentReminder/res/values/styles.xml -->
+    <eat-comment/>
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+</resources>
