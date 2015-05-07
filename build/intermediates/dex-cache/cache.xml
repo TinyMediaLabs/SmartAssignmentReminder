@@ -2,6 +2,13 @@
 <items version="2" >
 
     <item
+        jar="E:\Git\SmartAssignmentReminder\libs\android-support-v4.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="a13f8fe2c278737e2f0b6fcf00f6b2ae4034aacf">
+        <dex dex="E:\Git\SmartAssignmentReminder\build\intermediates\pre-dexed\debug\android-support-v4-074982b0bfd843ac0efdb813d9ed319d3ecbbd62.jar" />
+    </item>
+    <item
         jar="D:\Android\Workspace\AssignmentReminder\libs\android-support-v4.jar"
         jumboMode="false"
         revision="21.1.1"

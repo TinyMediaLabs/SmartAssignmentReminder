@@ -1,5 +1,8 @@
 package com.coffeetocode.assignmentreminder;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,22 +16,41 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.coffeetocode.assignmentreminder.Assignment;
 
 @SuppressWarnings("deprecation")
 public class MainActivity extends Activity {
 
-    public final static int NEW_ASSIGNMENT_REQUEST = 1;
-    public List<Assignment> assignments = new ArrayList<Assignment>();
-    DBHandler dbHandler = new DBHandler(this);
+    private class DrawerItemClickListener implements
+            ListView.OnItemClickListener {
+
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position,
+                                long id) {
+
+            // Highlight the selected item, update the title, and close the
+            // drawer
+            // update selected item and title, then close the drawer
+            mDrawerList.setItemChecked(position, true);
+
+            String text = "You clicked item #" + (position + 1);
+            Toast.makeText(MainActivity.this, text, Toast.LENGTH_SHORT).show();
+            cardArrayAdapter.remove(position);
+            mDrawerLayout.closeDrawer(mDrawerList);
+
+        }
+    }
+
     private String[] mDrawerItems;
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
     private CharSequence mTitle, mDrawerTitle;
     private ListView cardFeed;
+    public List<Assignment> assignments = new ArrayList<Assignment>();
     private CardArrayAdapter cardArrayAdapter;
+    DBHandler dbHandler = new DBHandler(this);
+    public final static int NEW_ASSIGNMENT_REQUEST = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +104,7 @@ public class MainActivity extends Activity {
         return true;
     }
 
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -105,7 +128,7 @@ public class MainActivity extends Activity {
         assignments = dbHandler.getAllAssignments();
         cardArrayAdapter.clear();
         for (int i = 0; i < assignments.size(); i++)
-            cardArrayAdapter.add(new Card(assignments.get(i).getID(), assignments.get(i).getTitle(), assignments.get(i).getDescription(), assignments.get(i).getSubject()));
+            cardArrayAdapter.add(new Card(assignments.get(i).getID(), assignments.get(i).getTitle(), assignments.get(i).getDescription()));
     }
 
     @Override
@@ -126,25 +149,5 @@ public class MainActivity extends Activity {
         boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
         menu.findItem(R.id.action_new).setVisible(!drawerOpen);
         return super.onPrepareOptionsMenu(menu);
-    }
-
-    private class DrawerItemClickListener implements
-            ListView.OnItemClickListener {
-
-        @Override
-        public void onItemClick(AdapterView<?> parent, View view, int position,
-                                long id) {
-
-            // Highlight the selected item, update the title, and close the
-            // drawer
-            // update selected item and title, then close the drawer
-            mDrawerList.setItemChecked(position, true);
-
-            String text = "You clicked item #" + (position + 1);
-            Toast.makeText(MainActivity.this, text, Toast.LENGTH_SHORT).show();
-            cardArrayAdapter.remove(position);
-            mDrawerLayout.closeDrawer(mDrawerList);
-
-        }
     }
 }

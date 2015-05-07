@@ -8,7 +8,7 @@
     <string name="drawer_open">Open the sidebar</string>
     <string name="drawer_close">Close the sidebar</string>
     <string name="newAssignment">New assignment</string>
-    <string name="reminders">Reminders</string>
+    <string name="deadline">Deadline</string>
     <string name="addReminder">Add another reminder</string>
     <string name="action_accept">Save</string>
     <string name="yes">Yes</string>
