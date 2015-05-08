@@ -32,7 +32,7 @@ public class AddAssignment extends ActionBarActivity implements TimePickerDialog
     EditText Subject;
 
     Calendar c = Calendar.getInstance();
-    //Calendar reminder = Calendar.getInstance();
+    Calendar reminder = Calendar.getInstance();
     DBHandler dbHandler = new DBHandler(this);
 
     SeekBar seekBar;
