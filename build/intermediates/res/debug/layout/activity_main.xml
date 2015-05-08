@@ -3,7 +3,8 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:fitsSystemWindows="true">
 
     <LinearLayout
         android:id="@+id/content_frame"
@@ -45,11 +46,11 @@
                 android:layout_marginBottom="24dp"
                 android:layout_marginEnd="24dp"
                 android:layout_marginRight="24dp"
-                android:stateListAnimator="@anim/anim"
                 android:background="@drawable/fab_background"
-                android:onClick="newAssignment"
                 android:elevation="8dp"
+                android:onClick="newAssignment"
                 android:src="@drawable/ic_action_new"
+                android:stateListAnimator="@anim/anim"
                 android:tint="@color/white" />
 
         </RelativeLayout>
