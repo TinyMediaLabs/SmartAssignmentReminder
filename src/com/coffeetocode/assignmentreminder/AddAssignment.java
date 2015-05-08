@@ -91,6 +91,7 @@ public class AddAssignment extends ActionBarActivity implements TimePickerDialog
             }
         });
 
+        reminder.setTimeInMillis(0);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar1);
         setSupportActionBar(toolbar);
