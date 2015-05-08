@@ -14,7 +14,7 @@
             android:summary="@string/pref_clear_data_summary"
             android:title="@string/pref_clear_data_title" />
 
-        <listpreference
+        <ListPreference
             android:defaultValue="Deadline"
             android:entries="@array/sort_type"
             android:entryvalues="@array/sort_type"
