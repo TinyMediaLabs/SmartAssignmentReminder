@@ -1,2 +1,2 @@
-C:\Users\Samsung\Documents\SmartAssignmentReminder\build\intermediates\classes\debug
-C:\Users\Samsung\Documents\SmartAssignmentReminder\build\intermediates\pre-dexed\debug\android-support-v4-87329896657b9d0a2e9b960fa704b473b8fcd4d0.jar
+E:\Git\SmartAssignmentReminder\build\intermediates\classes\debug
+E:\Git\SmartAssignmentReminder\build\intermediates\pre-dexed\debug\android-support-v4-074982b0bfd843ac0efdb813d9ed319d3ecbbd62.jar
