@@ -35,24 +35,24 @@
         <!-- TODO: add sidebar elements here  -->
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:onClick="openSettings">
 
             <ImageButton
-                android:id="@+id/delete_button"
+                android:id="@+id/setting_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="4dp"
+                android:layout_margin="16dp"
                 android:background="@android:color/transparent"
                 android:src="@drawable/ic_action_settings"
                 android:text="Settings" />
 
             <Button
+                android:id="@+id/settings_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
                 android:background="?android:attr/selectableItemBackground"
-                android:onClick="openSettings"
                 android:text="Settings" />
         </RelativeLayout>
     </LinearLayout>

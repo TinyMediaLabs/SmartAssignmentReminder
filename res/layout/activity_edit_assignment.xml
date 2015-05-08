@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autoText="false"
+        android:hint="Title"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/editText5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Description"
+        android:inputType="textMultiLine"
+        android:textSize="20sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/deadline"
+        android:textSize="20sp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <!--
+                <ImageButton
+                    android:id="@+id/deleteReminder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="4dp"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_action_discard" />
+        -->
+        <Button
+            android:id="@+id/dateDisplay"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="8dp"
+            android:layout_toEndOf="@+id/deleteReminder"
+            android:layout_toRightOf="@+id/deleteReminder"
+            android:onClick="showDatePickerDialog"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/timeDisplay"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="4dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="4dp"
+            android:onClick="showTimePickerDialog"
+            android:textSize="20sp" />
+
+    </RelativeLayout>
+    <!--
+        <RelativeLayout
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="addReminder"
+            android:gravity="left">
+
+            <ImageView
+                android:id="@+id/addReminder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_margin="4dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_action_new" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="4dp"
+                android:layout_toEndOf="@+id/addReminder"
+                android:layout_toRightOf="@+id/addReminder"
+                android:text="@string/addReminder"
+                android:textSize="20sp" />
+        </RelativeLayout>
+    -->
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Subject"
+        android:textSize="20sp" />
+
+
+</LinearLayout>
