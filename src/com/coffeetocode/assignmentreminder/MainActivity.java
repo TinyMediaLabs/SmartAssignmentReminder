@@ -1,8 +1,14 @@
 package com.coffeetocode.assignmentreminder;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
@@ -24,11 +30,41 @@ public class MainActivity extends ActionBarActivity {
     private static final int RESULT_SETTINGS = 1;
     public List<Assignment> assignments = new ArrayList<Assignment>();
     DBHandler dbHandler = new DBHandler(this);
+    BackgroundThread backgroundThread;
+    Handler backgroundHandler;
     private DrawerLayout drawerLayout;
     private LinearLayout drawer;
     private ActionBarDrawerToggle drawerToggle;
     private ListView cardFeed;
     private CardArrayAdapter cardArrayAdapter;
+
+    @Override
+    protected void onStart() {
+        // TODO Auto-generated method stub
+        super.onStart();
+        backgroundThread = new BackgroundThread();
+        backgroundThread.setRunning(true);
+        backgroundThread.start();
+    }
+
+    @Override
+    protected void onStop() {
+        // TODO Auto-generated method stub
+        super.onStop();
+        boolean retry = true;
+        backgroundThread.setRunning(false);
+
+        while (retry) {
+            try {
+                backgroundThread.join();
+                retry = false;
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +99,6 @@ public class MainActivity extends ActionBarActivity {
         options.setVisible(false);
         return true;
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -120,6 +155,60 @@ public class MainActivity extends ActionBarActivity {
     public void newAssignment(View view) {
         Intent i = new Intent(this, AddAssignment.class);
         startActivityForResult(i, NEW_ASSIGNMENT_REQUEST);
+    }
+
+    public class BackgroundThread extends Thread {
+        final static String ACTION = "NotifyServiceAction";
+        private static final int MY_NOTIFICATION_ID = 1;
+        private final String myBlog = "http://android-er.blogspot.com/";
+        boolean running = false;
+        NotificationManager notificationManager;
+        Notification myNotification;
+
+        void setRunning(boolean b) {
+            running = b;
+        }
+
+        @Override
+        public synchronized void start() {
+            // TODO Auto-generated method stub
+            super.start();
+            notificationManager =
+                    (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        }
+
+        @Override
+        public void run() {
+            // TODO Auto-generated method stub
+            while (running) {
+                try {
+                    sleep(1000000); //send notification in every 10sec.
+                } catch (InterruptedException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+
+                // Send Notification
+                myNotification = new Notification(R.drawable.ic_launcher,
+                        "Notification!",
+                        System.currentTimeMillis());
+                Context context = getApplicationContext();
+                String notificationTitle = "Assignment incoming!";
+                String notificationText = "http://android-er.blogspot.com/";
+                Intent myIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(myBlog));
+                PendingIntent pendingIntent
+                        = PendingIntent.getActivity(getBaseContext(),
+                        0, myIntent,
+                        Intent.FLAG_ACTIVITY_NEW_TASK);
+                myNotification.defaults |= Notification.DEFAULT_SOUND;
+                myNotification.flags |= Notification.FLAG_AUTO_CANCEL;
+                myNotification.setLatestEventInfo(context,
+                        notificationTitle,
+                        notificationText,
+                        pendingIntent);
+                notificationManager.notify(MY_NOTIFICATION_ID, myNotification);
+            }
+        }
     }
 
 }

@@ -1338,13 +1338,14 @@ containing a value of this type.
         public static final int fab_background=0x7f020039;
         public static final int ic_action_accept=0x7f02003a;
         public static final int ic_action_discard=0x7f02003b;
-        public static final int ic_action_new=0x7f02003c;
-        public static final int ic_action_settings=0x7f02003d;
-        public static final int ic_drawer=0x7f02003e;
-        public static final int ic_launcher=0x7f02003f;
-        public static final int oval=0x7f020040;
-        public static final int oval_clicked=0x7f020041;
-        public static final int sidebar_button_background=0x7f020042;
+        public static final int ic_action_edit=0x7f02003c;
+        public static final int ic_action_new=0x7f02003d;
+        public static final int ic_action_settings=0x7f02003e;
+        public static final int ic_drawer=0x7f02003f;
+        public static final int ic_launcher=0x7f020040;
+        public static final int oval=0x7f020041;
+        public static final int oval_clicked=0x7f020042;
+        public static final int sidebar_button_background=0x7f020043;
     }
     public static final class id {
         public static final int action_bar=0x7f0a0031;
@@ -1501,19 +1502,9 @@ containing a value of this type.
         public static final int drawer_close=0x7f0c0017;
         public static final int drawer_open=0x7f0c0018;
         public static final int hello_world=0x7f0c0019;
-        public static final int menu_settings=0x7f0c001a;
-        public static final int newAssignment=0x7f0c001b;
-        public static final int no=0x7f0c001c;
-        public static final int pref_send_report=0x7f0c001d;
-        public static final int pref_send_report_summary=0x7f0c001e;
-        public static final int pref_sync_frequency=0x7f0c001f;
-        public static final int pref_sync_frequency_summary=0x7f0c0020;
-        public static final int pref_update_setting=0x7f0c0021;
-        public static final int pref_user_name=0x7f0c0022;
-        public static final int pref_user_name_summary=0x7f0c0023;
-        public static final int pref_user_profile=0x7f0c0024;
-        public static final int title_activity_main=0x7f0c0025;
-        public static final int yes=0x7f0c0026;
+        public static final int newAssignment=0x7f0c001a;
+        public static final int no=0x7f0c001b;
+        public static final int yes=0x7f0c001c;
     }
     public static final class style {
         public static final int Animation_AppCompat_DropDownUp=0x7f0d0000;

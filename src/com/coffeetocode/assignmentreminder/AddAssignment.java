@@ -94,8 +94,10 @@ public class AddAssignment extends ActionBarActivity implements TimePickerDialog
         } else {
             dbHandler.addAssignment(new Assignment(Title.getText().toString(),
                     Description.getText().toString(),
-                    (double) c.getTimeInMillis() / 1000,
-                    Subject.getText().toString()));
+                    c,
+                    Subject.getText().toString(),
+                    /*difficulty*/,
+                    /*reminder*/));
             Toast.makeText(this, "Assignment saved", Toast.LENGTH_SHORT).show();
             this.finish();
         }

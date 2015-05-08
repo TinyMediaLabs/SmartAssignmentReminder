@@ -1,29 +1,34 @@
 package com.coffeetocode.assignmentreminder;
 
-import java.lang.String;
+import java.util.Calendar;
 
 public class Assignment {
     private int ID;
 	private String title;
 	private String description;
-	private double dueDate; // UNIX time
-	private String subject;
+    private Calendar deadline;
+    private String subject;
+    private String difficulty;
+    private Calendar reminder;
 
-	public Assignment (String title, String description, double dueDate, String subject)
-	{
+    public Assignment(String title, String description, Calendar deadline, String subject, String difficulty, Calendar reminder) {
 		this.title = title;
 		this.description = description;
-		this.dueDate = dueDate;
-		this.subject = subject;
-	}
+        this.deadline = deadline;
+        this.subject = subject;
+        this.difficulty = difficulty;
+        this.reminder = reminder;
+    }
 
-    public Assignment (int id, String title, String description, double dueDate, String subject)
+    public Assignment(int id, String title, String description, Calendar deadline, String subject, String difficulty, Calendar reminder)
     {
         this.ID = id;
         this.title = title;
         this.description = description;
-        this.dueDate = dueDate;
+        this.deadline = deadline;
         this.subject = subject;
+        this.difficulty = difficulty;
+        this.reminder = reminder;
     }
 
     public int getID()
@@ -56,16 +61,6 @@ public class Assignment {
         this.description = description;
     }
 
-    public double getDueDate()
-    {
-        return dueDate;
-    }
-
-    public void setDueDate(double dueDate)
-    {
-        this.dueDate = dueDate;
-    }
-
     public String getSubject()
     {
         return subject;
@@ -76,4 +71,31 @@ public class Assignment {
         this.subject = subject;
     }
 
+    public Calendar getDeadline() {
+        return deadline;
+    }
+
+    public void setDeadline(Calendar deadline) {
+        this.deadline = deadline;
+    }
+
+    public String getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(String difficulty) {
+        this.difficulty = difficulty;
+    }
+
+    public Calendar getReminder() {
+        return reminder;
+    }
+
+    public void setReminder(Calendar reminder) {
+        this.reminder = reminder;
+    }
+
+    public String getCalendarString(Calendar calendar) {
+        return new String(calendar.YEAR + "-" + calendar.MONTH + "-" + calendar.DAY_OF_MONTH + "-" + calendar.HOUR + "-" + calendar.MINUTE + "-");
+    }
 }

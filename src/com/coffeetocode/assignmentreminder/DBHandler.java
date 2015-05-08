@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 
@@ -24,15 +25,10 @@ public class DBHandler extends SQLiteOpenHelper
     private static final String ASSIGNMENT_ID           = "ID";
     private static final String ASSIGNMENT_TITLE        = "title";
     private static final String ASSIGNMENT_DESCRIPTION  = "description";
-    private static final String DUEDATE                 = "dueDate";
+    private static final String DEADLINE = "dueDate";
     private static final String SUBJECT                 = "subject";
-
-    //Cards table definition
-    private static final String CARDS_TABLE        = "cards";
-    private static final String CARD_ID            = "ID";
-    private static final String CARD_TITLE         = "title";
-    private static final String CARD_DESCRIPTION   = "description";
-    private static final String CARD_SUBJECT = "subject";
+    private static final String DIFFICULTY = "difficulty";
+    private static final String REMINDER = "reminder";
 
     public DBHandler(Context context)
     {
@@ -48,28 +44,19 @@ public class DBHandler extends SQLiteOpenHelper
                 + ASSIGNMENT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + ASSIGNMENT_TITLE + " TEXT,"
                 + ASSIGNMENT_DESCRIPTION + " TEXT,"
-                + DUEDATE + " REAL,"
-                + SUBJECT + " TEXT"
-                + ")";
-
-        String CREATE_CARDS_TABLE = "" +
-                "CREATE TABLE " + CARDS_TABLE
-                + " ("
-                + CARD_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-                + CARD_TITLE + " TEXT,"
-                + CARD_DESCRIPTION + " TEXT,"
-                + CARD_SUBJECT + " TEXT"
+                + DEADLINE + " TEXT,"
+                + SUBJECT + " TEXT,"
+                + DIFFICULTY + " TEXT,"
+                + REMINDER + " TEXT"
                 + ")";
 
         db.execSQL(CREATE_ASSIGNMENTS_TABLE);
-        db.execSQL(CREATE_CARDS_TABLE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i2)
     {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + ASSIGNMENTS_TABLE);
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + CARDS_TABLE);
         onCreate(sqLiteDatabase);
     }
 
@@ -80,8 +67,10 @@ public class DBHandler extends SQLiteOpenHelper
         ContentValues values = new ContentValues();
         values.put(ASSIGNMENT_TITLE,       assignment.getTitle());
         values.put(ASSIGNMENT_DESCRIPTION, assignment.getDescription());
-        values.put(DUEDATE,                assignment.getDueDate());
+        values.put(DEADLINE, assignment.getCalendarString(assignment.getDeadline()));
         values.put(SUBJECT,                assignment.getSubject());
+        values.put(DIFFICULTY, assignment.getDifficulty());
+        values.put(REMINDER, assignment.getCalendarString(assignment.getReminder()));
 
         db.insert(ASSIGNMENTS_TABLE, null, values);
     }
@@ -99,7 +88,7 @@ public class DBHandler extends SQLiteOpenHelper
 
         Cursor cursor = db.query(
                 ASSIGNMENTS_TABLE,
-                new String[] {ASSIGNMENT_ID, ASSIGNMENT_TITLE, ASSIGNMENT_DESCRIPTION, DUEDATE, SUBJECT},
+                new String[]{ASSIGNMENT_ID, ASSIGNMENT_TITLE, ASSIGNMENT_DESCRIPTION, DEADLINE, SUBJECT, DIFFICULTY, REMINDER},
                 ASSIGNMENT_ID + " = " + String.valueOf(id),
                 null, null, null, null, null);
         if (cursor != null)
@@ -107,11 +96,13 @@ public class DBHandler extends SQLiteOpenHelper
             cursor.moveToFirst();
         }
         Assignment assignment= new Assignment(
-                cursor.getInt(0),       //ASSIGNMENT_ID
-                cursor.getString(1),    //ASSIGNMENT_TITLE
-                cursor.getString(2),    //ASSIGNMENT_DESCRIPTION
-                cursor.getDouble(3),    //DUEDATE
-                cursor.getString(4)     //SUBJECT
+                cursor.getInt(0),                           //ASSIGNMENT_ID
+                cursor.getString(1),                        //ASSIGNMENT_TITLE
+                cursor.getString(2),                        //ASSIGNMENT_DESCRIPTION
+                getCalendarCalendar(cursor.getString(3)),   //DEADLINE
+                cursor.getString(4),                        //SUBJECT
+                cursor.getString(5),                        //DIFFICULTY
+                getCalendarCalendar(cursor.getString(6))    //REMINDER
         );
         return assignment;
 
@@ -132,11 +123,13 @@ public class DBHandler extends SQLiteOpenHelper
             do
             {
                 Assignment assignment= new Assignment(
-                        cursor.getInt(0),       //ASSIGNMENT_ID
-                        cursor.getString(1),    //ASSIGNMENT_TITLE
-                        cursor.getString(2),    //ASSIGNMENT_DESCRIPTION
-                        cursor.getDouble(3),    //DUEDATE
-                        cursor.getString(4)     //SUBJECT
+                        cursor.getInt(0),                           //ASSIGNMENT_ID
+                        cursor.getString(1),                        //ASSIGNMENT_TITLE
+                        cursor.getString(2),                        //ASSIGNMENT_DESCRIPTION
+                        getCalendarCalendar(cursor.getString(3)),   //DEADLINE
+                        cursor.getString(4),                        //SUBJECT
+                        cursor.getString(5),                        //DIFFICULTY
+                        getCalendarCalendar(cursor.getString(6))    //REMINDER
                 );
 
                 assignmentList.add(assignment);
@@ -155,8 +148,10 @@ public class DBHandler extends SQLiteOpenHelper
         ContentValues values = new ContentValues();
         values.put(ASSIGNMENT_TITLE,       assignment.getTitle());
         values.put(ASSIGNMENT_DESCRIPTION, assignment.getDescription());
-        values.put(DUEDATE,                assignment.getDueDate());
+        values.put(DEADLINE, assignment.getCalendarString(assignment.getDeadline()));
         values.put(SUBJECT,                assignment.getSubject());
+        values.put(DIFFICULTY, assignment.getDifficulty());
+        values.put(REMINDER, assignment.getCalendarString(assignment.getReminder()));
 
         return db.update(ASSIGNMENTS_TABLE, values, ASSIGNMENT_ID + " = " + String.valueOf(assignment.getID()), null);
     }
@@ -165,104 +160,22 @@ public class DBHandler extends SQLiteOpenHelper
     {
         SQLiteDatabase db = this.getWritableDatabase();
 
-        String countQuery = "SELECT + FROM " + ASSIGNMENTS_TABLE;
+        String countQuery = "SELECT * FROM " + ASSIGNMENTS_TABLE;
 
         Cursor cursor = db.rawQuery(countQuery, null);
 
         return cursor.getCount();
     }
 
-    void addCard (Card card)
-    {
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        ContentValues values = new ContentValues();
-        values.put(CARD_TITLE,  card.getTitle());
-        values.put(CARD_DESCRIPTION, card.getDescription());
-        values.put(CARD_SUBJECT, card.getSubject());
-
-        db.insert(CARDS_TABLE, null, values);
-    }
-
-    void deleteCard(Card card)
-    {
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        db.delete(CARDS_TABLE, CARD_ID + " = " + String.valueOf(card.getID()), null);
-    }
-
-    public Card getCard(int id)
-    {
-        SQLiteDatabase db = this.getReadableDatabase();
-
-        Cursor cursor = db.query(
-                CARDS_TABLE,
-                new String[]{CARD_ID, CARD_TITLE, CARD_DESCRIPTION, CARD_SUBJECT},
-                CARD_ID + " = " + String.valueOf(id),
-                null, null, null, null, null);
-        if (cursor != null)
-        {
-            cursor.moveToFirst();
-        }
-        Card card = new Card(
-                cursor.getInt(0),       //CARD_ID
-                cursor.getString(1),    //CARD_TITLE
-                cursor.getString(2),    //CARD_DESCRIPTION
-                cursor.getString(3)     //CARD_SUBJECT
-        );
-        return card;
-
-    }
-
-    public List<Card> getAllCards()
-    {
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        List<Card> cardList = new ArrayList<Card>();
-
-        String selectQuery = "SELECT + FROM " + CARDS_TABLE;
-
-        Cursor cursor = db.rawQuery(selectQuery, null);
-
-        if (cursor != null && cursor.moveToFirst())
-        {
-            do
-            {
-                Card card = new Card(
-                        cursor.getInt(0),       //CARD_ID
-                        cursor.getString(1),    //CARD_TITLE
-                        cursor.getString(2),    //CARD_DESCRIPTION
-                        cursor.getString(3)     //CARD_SUBJECT
-                );
-
-                cardList.add(card);
-            }
-            while (cursor.moveToFirst());
-        }
-
-        return cardList;
-
-    }
-
-    public int updateCard(Card card)
-    {
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        ContentValues values = new ContentValues();
-        values.put(CARD_TITLE,       card.getTitle());
-        values.put(CARD_DESCRIPTION, card.getDescription());
-
-        return db.update(CARDS_TABLE, values, CARD_ID + " = " + String.valueOf(card.getID()), null);
-    }
-
-    public int getCardsCount()
-    {
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        String countQuery = "SELECT + FROM " + CARDS_TABLE;
-
-        Cursor cursor = db.rawQuery(countQuery, null);
-
-        return cursor.getCount();
+    public Calendar getCalendarCalendar(String string) {
+        String delims = "[-]+";
+        String[] reminderString = string.split(delims);
+        Calendar c = Calendar.getInstance();
+        c.set(Calendar.YEAR, Integer.parseInt(reminderString[0]));
+        c.set(Calendar.MONTH, Integer.parseInt(reminderString[1]));
+        c.set(Calendar.DAY_OF_MONTH, Integer.parseInt(reminderString[2]));
+        c.set(Calendar.HOUR, Integer.parseInt(reminderString[3]));
+        c.set(Calendar.MINUTE, Integer.parseInt(reminderString[4]));
+        return c;
     }
 }
