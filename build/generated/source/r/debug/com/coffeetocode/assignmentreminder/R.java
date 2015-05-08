@@ -1343,11 +1343,12 @@ containing a value of this type.
         public static final int ic_action_edit=0x7f02003e;
         public static final int ic_action_new=0x7f02003f;
         public static final int ic_action_settings=0x7f020040;
-        public static final int ic_drawer=0x7f020041;
-        public static final int ic_launcher=0x7f020042;
-        public static final int oval=0x7f020043;
-        public static final int oval_clicked=0x7f020044;
-        public static final int sidebar_button_background=0x7f020045;
+        public static final int ic_action_time=0x7f020041;
+        public static final int ic_drawer=0x7f020042;
+        public static final int ic_launcher=0x7f020043;
+        public static final int oval=0x7f020044;
+        public static final int oval_clicked=0x7f020045;
+        public static final int sidebar_button_background=0x7f020046;
     }
     public static final class id {
         public static final int action_bar=0x7f0a0031;
@@ -1363,7 +1364,7 @@ containing a value of this type.
         public static final int action_mode_bar=0x7f0a002e;
         public static final int action_mode_bar_stub=0x7f0a002d;
         public static final int action_mode_close_button=0x7f0a0020;
-        public static final int action_settings=0x7f0a0057;
+        public static final int action_settings=0x7f0a005b;
         public static final int activity_chooser_view_content=0x7f0a0021;
         public static final int add_button=0x7f0a0049;
         public static final int always=0x7f0a0016;
@@ -1371,13 +1372,17 @@ containing a value of this type.
         public static final int card=0x7f0a0053;
         public static final int cards_feed=0x7f0a0048;
         public static final int checkbox=0x7f0a0029;
+        public static final int clock_icon=0x7f0a0058;
         public static final int collapseActionView=0x7f0a0017;
         public static final int container=0x7f0a0051;
         public static final int content_frame=0x7f0a0046;
         public static final int dateDisplay=0x7f0a0042;
+        public static final int deadline_date=0x7f0a005a;
+        public static final int deadline_display=0x7f0a0057;
+        public static final int deadline_time=0x7f0a0059;
         public static final int decor_content_parent=0x7f0a002f;
         public static final int default_activity_button=0x7f0a0024;
-        public static final int delete_button=0x7f0a0056;
+        public static final int delete_button=0x7f0a0055;
         public static final int description=0x7f0a0054;
         public static final int dialog=0x7f0a001b;
         public static final int disableHome=0x7f0a000c;
@@ -1425,7 +1430,7 @@ containing a value of this type.
         public static final int showHome=0x7f0a0010;
         public static final int showTitle=0x7f0a0011;
         public static final int split_action_bar=0x7f0a0007;
-        public static final int subject=0x7f0a0055;
+        public static final int subject=0x7f0a0056;
         public static final int submit_area=0x7f0a003c;
         public static final int tabMode=0x7f0a000b;
         public static final int timeDisplay=0x7f0a0043;

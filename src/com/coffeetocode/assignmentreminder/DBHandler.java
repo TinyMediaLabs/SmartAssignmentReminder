@@ -182,7 +182,7 @@ public class DBHandler extends SQLiteOpenHelper
         c.set(Calendar.YEAR, Integer.parseInt(reminderString[0]));
         c.set(Calendar.MONTH, Integer.parseInt(reminderString[1]));
         c.set(Calendar.DAY_OF_MONTH, Integer.parseInt(reminderString[2]));
-        c.set(Calendar.HOUR, Integer.parseInt(reminderString[3]));
+        c.set(Calendar.HOUR_OF_DAY, Integer.parseInt(reminderString[3]));
         c.set(Calendar.MINUTE, Integer.parseInt(reminderString[4]));
         return c;
     }

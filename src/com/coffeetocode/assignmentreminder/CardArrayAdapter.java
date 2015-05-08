@@ -13,7 +13,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 public class CardArrayAdapter extends ArrayAdapter<Card> {
     DBHandler dbHandler = new DBHandler(getContext());
@@ -85,6 +87,18 @@ public class CardArrayAdapter extends ArrayAdapter<Card> {
                 CardArrayAdapter.this.notifyDataSetChanged();
             }
         });
+
+        TextView deadline_time = (TextView) row.findViewById(R.id.deadline_time);
+        TextView deadline_date = (TextView) row.findViewById(R.id.deadline_date);
+
+        Calendar c = dbHandler.getAssignment(card.getID()).getDeadline();
+
+        deadline_date.setText(c.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault()) +
+                ", " + c.getDisplayName(Calendar.MONTH, Calendar.SHORT, Locale.getDefault()) +
+                " " + c.get(Calendar.DATE) +
+                ", " + c.get(Calendar.YEAR));
+
+        deadline_time.setText(String.format("%02d:%02d", c.get(Calendar.HOUR_OF_DAY), c.get(Calendar.MINUTE)));
 
         RelativeLayout cardItem = (RelativeLayout) row.findViewById(R.id.card);
         cardItem.setTag(position);

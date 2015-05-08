@@ -17,6 +17,9 @@
         android:layout_height="wrap_content"
         android:autoText="false"
         android:hint="Title"
+        android:maxLength="20"
+        android:maxLines="1"
+        android:singleLine="true"
         android:textSize="20sp" />
 
     <EditText
@@ -72,6 +75,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Subject"
+        android:maxLength="20"
+        android:maxLines="1"
+        android:singleLine="true"
         android:textSize="20sp" />
 
     <TextView

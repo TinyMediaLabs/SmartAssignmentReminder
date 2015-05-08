@@ -24,15 +24,10 @@
 
         <TextView
             android:id="@+id/description"
+            android:layout_marginLeft="4dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/title" />
-
-        <TextView
-            android:id="@+id/subject"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/description" />
 
         <ImageButton
             android:id="@+id/delete_button"
@@ -47,6 +42,56 @@
             android:src="@drawable/ic_action_discard"
             android:text="@string/delete" />
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@id/description"
+            android:layout_alignParentBottom="true">
+
+
+            <TextView
+                android:id="@+id/subject"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="8dp" />
+
+            <RelativeLayout
+                android:id="@+id/deadline_display"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/clock_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_action_time" />
+
+                <TextView
+                    android:id="@+id/deadline_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/clock_icon"
+                    android:src="@drawable/ic_action_time"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/deadline_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_action_time"
+                    android:textSize="16sp" />
+
+
+            </RelativeLayout>
+        </LinearLayout>
     </RelativeLayout>
 
 </RelativeLayout><!-- From: file:/E:/Git/SmartAssignmentReminder/res/layout/assignment_card.xml -->
