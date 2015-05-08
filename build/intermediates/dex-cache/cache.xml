@@ -2,11 +2,39 @@
 <items version="2" >
 
     <item
+        jar="D:\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.0.0\support-annotations-22.0.0.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="685d0b2c590447e85284ed84712cb363ba04eff8">
+        <dex dex="E:\Git\SmartAssignmentReminder\build\intermediates\pre-dexed\debug\support-annotations-22.0.0-9c7f0f00a3d76e88d03ff501363eae75a59facb5.jar" />
+    </item>
+    <item
+        jar="E:\Git\SmartAssignmentReminder\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="d84409890828e07d344a3b9b1da545dba9897b51">
+        <dex dex="E:\Git\SmartAssignmentReminder\build\intermediates\pre-dexed\debug\classes-b513d37b54f65e25b3e490d39a928acbb5d42a50.jar" />
+    </item>
+    <item
+        jar="E:\Git\SmartAssignmentReminder\build\intermediates\exploded-aar\com.android.support\support-v4\22.0.0\libs\internal_impl-22.0.0.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="b5b92f469d515a13d778900f6d50c03d12f35504">
+        <dex dex="E:\Git\SmartAssignmentReminder\build\intermediates\pre-dexed\debug\internal_impl-22.0.0-d922554e33c880baea9c704433b6429cd330d58e.jar" />
+    </item>
+    <item
         jar="E:\Git\SmartAssignmentReminder\libs\android-support-v4.jar"
         jumboMode="false"
         revision="21.1.1"
         sha1="a13f8fe2c278737e2f0b6fcf00f6b2ae4034aacf">
         <dex dex="E:\Git\SmartAssignmentReminder\build\intermediates\pre-dexed\debug\android-support-v4-074982b0bfd843ac0efdb813d9ed319d3ecbbd62.jar" />
+    </item>
+    <item
+        jar="E:\Git\SmartAssignmentReminder\build\intermediates\exploded-aar\com.android.support\support-v4\22.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
+        <dex dex="E:\Git\SmartAssignmentReminder\build\intermediates\pre-dexed\debug\classes-fe5e0c9c63090c0f4623c21f738d53d7749c4c89.jar" />
     </item>
     <item
         jar="D:\Android\Workspace\AssignmentReminder\libs\android-support-v4.jar"

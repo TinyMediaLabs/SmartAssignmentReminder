@@ -1,12 +1,13 @@
 package com.coffeetocode.assignmentreminder;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SuppressWarnings("deprecation")
-public class MainActivity extends Activity {
+public class MainActivity extends ActionBarActivity {
 
     public final static int NEW_ASSIGNMENT_REQUEST = 1;
     private static final int RESULT_SETTINGS = 1;
@@ -63,6 +64,9 @@ public class MainActivity extends Activity {
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
         };
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
     }
 
     @Override
@@ -126,10 +130,11 @@ public class MainActivity extends Activity {
         return super.onPrepareOptionsMenu(menu);
     }
 
-    // TODO: remove this function together with the sidebar's test button; add appropriate onClick function implementations for sidebar
     public void openSettings(View view) {
         Intent i = new Intent(this, Settings.class);
         startActivityForResult(i, RESULT_SETTINGS);
     }
+
+
 }
 

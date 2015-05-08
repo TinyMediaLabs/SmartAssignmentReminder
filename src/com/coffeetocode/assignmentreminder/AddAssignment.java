@@ -5,7 +5,8 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,7 +22,7 @@ import java.util.Locale;
 /**
  * Created by Samsung on 4/17/2015.
  */
-public class AddAssignment extends FragmentActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
+public class AddAssignment extends ActionBarActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
     Button timeDisplay;
     Button dateDisplay;
     EditText Description;
@@ -30,7 +31,6 @@ public class AddAssignment extends FragmentActivity implements TimePickerDialog.
     Calendar c = Calendar.getInstance();
     DBHandler dbHandler = new DBHandler(this);
     // added a useless comment
-
     public void showTimePickerDialog(View v) {
         TimePickerFragment newFragment = new TimePickerFragment();
         newFragment.setTime(c);
@@ -67,7 +67,8 @@ public class AddAssignment extends FragmentActivity implements TimePickerDialog.
         Description = (EditText) findViewById(R.id.editText5);
         Title = (EditText) findViewById(R.id.editText);
         Subject = (EditText) findViewById(R.id.editText2);
-
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar1);
+        setSupportActionBar(toolbar);
         updateTimeDateDisplay();
     }
 

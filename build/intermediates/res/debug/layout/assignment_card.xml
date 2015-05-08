@@ -8,23 +8,23 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/card"
         android:orientation="vertical"
-        android:padding="@dimen/activity_padding" >
+        android:padding="@dimen/activity_padding">
 
         <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="24sp" >
-        </TextView>
+            android:textSize="24sp"></TextView>
 
         <TextView
             android:id="@+id/description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/title" >
-        </TextView>
+            android:layout_below="@id/title"></TextView>
 
         <TextView
             android:id="@+id/subject"
