@@ -2,7 +2,7 @@
 <resources>
     <color name="white">#FFFFFF</color>
     <color name="yellow">#ffffe000</color>
-    <color name="orange">#ffffbb00</color>
+    <color name="orange">#ffffd300</color>
     <color name="fuchsia">#FF00FF</color>
     <color name="red">#FF0000</color>
     <color name="silver">#C0C0C0</color>

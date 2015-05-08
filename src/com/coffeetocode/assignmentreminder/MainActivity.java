@@ -4,9 +4,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,8 +26,7 @@ public class MainActivity extends ActionBarActivity {
     DBHandler dbHandler = new DBHandler(this);
     private DrawerLayout drawerLayout;
     private LinearLayout drawer;
-    private ActionBarDrawerToggle mDrawerToggle;
-    private CharSequence mTitle, mDrawerTitle;
+    private ActionBarDrawerToggle drawerToggle;
     private ListView cardFeed;
     private CardArrayAdapter cardArrayAdapter;
 
@@ -44,29 +43,16 @@ public class MainActivity extends ActionBarActivity {
         updateCards();
 
         cardFeed.setAdapter(cardArrayAdapter);
-
-        mTitle = getTitle();
-        mDrawerTitle = getTitle();
-        mDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout,
-                R.drawable.ic_drawer, R.string.drawer_open,
-                R.string.drawer_close) {
-            /** Called when a drawer has settled in a completely closed state. */
-            public void onDrawerClosed(View view) {
-                super.onDrawerClosed(view);
-                getActionBar().setTitle(mTitle);
-                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
-            }
-
-            /** Called when a drawer has settled in a completely open state. */
-            public void onDrawerOpened(View drawerView) {
-                super.onDrawerOpened(drawerView);
-                getActionBar().setTitle(mDrawerTitle);
-                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
-            }
-        };
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        drawerToggle = new ActionBarDrawerToggle(this, drawerLayout,
+                toolbar, R.string.drawer_open,
+                R.string.drawer_close);
+        drawerLayout.setDrawerListener(drawerToggle);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        drawerToggle.syncState();
     }
 
     @Override
@@ -86,10 +72,6 @@ public class MainActivity extends ActionBarActivity {
         // as you specify a parent activity in AndroidManifest.xml.
 
         switch (item.getItemId()) {
-            case R.id.action_new:
-                Intent i = new Intent(this, AddAssignment.class);
-                startActivityForResult(i, NEW_ASSIGNMENT_REQUEST);
-                return true;
             case R.id.action_settings:
                 return true;
             default:
@@ -126,15 +108,19 @@ public class MainActivity extends ActionBarActivity {
         // content
         // view
         boolean drawerOpen = drawerLayout.isDrawerOpen(drawer);
-        menu.findItem(R.id.action_new).setVisible(!drawerOpen);
         return super.onPrepareOptionsMenu(menu);
     }
 
     public void openSettings(View view) {
+        drawerLayout.closeDrawers();
         Intent i = new Intent(this, Settings.class);
         startActivityForResult(i, RESULT_SETTINGS);
     }
 
+    public void newAssignment(View view) {
+        Intent i = new Intent(this, AddAssignment.class);
+        startActivityForResult(i, NEW_ASSIGNMENT_REQUEST);
+    }
 
 }
 

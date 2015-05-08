@@ -101,17 +101,8 @@ public class AddAssignment extends ActionBarActivity implements TimePickerDialog
         }
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle presses on the action bar items
-        switch (item.getItemId()) {
-            case R.id.action_accept:
-                //Something is done here
-                addAssignment();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
+    public void save(View view) {
+        addAssignment();
     }
 
     @Override

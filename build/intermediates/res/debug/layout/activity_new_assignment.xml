@@ -3,13 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <android.support.v7.widget.Toolbar
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/toolbar1"
-        android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:minHeight="?attr/actionBarSize"
-        android:background="?attr/colorPrimary" />
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize" />
+
     <EditText
         android:id="@+id/editText"
         android:layout_width="match_parent"
@@ -31,7 +32,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
-        android:layout_marginLeft="12dp"
+        android:layout_marginLeft="4dp"
         android:layout_marginTop="8dp"
         android:text="@string/deadline"
         android:textSize="20sp" />
@@ -39,23 +40,14 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <!--
-                <ImageButton
-                    android:id="@+id/deleteReminder"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_margin="4dp"
-                    android:background="@android:color/transparent"
-                    android:src="@drawable/ic_action_discard" />
-        -->
+
         <Button
             android:id="@+id/dateDisplay"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="8dp"
+            android:layout_marginLeft="4dp"
             android:onClick="showDatePickerDialog"
             android:textSize="20sp" />
 
@@ -68,42 +60,13 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginBottom="4dp"
-            android:layout_marginRight="16dp"
+            android:layout_marginRight="4dp"
             android:layout_marginTop="4dp"
             android:onClick="showTimePickerDialog"
             android:textSize="20sp" />
 
     </RelativeLayout>
-    <!--
-        <RelativeLayout
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:focusable="true"
-            android:onClick="addReminder"
-            android:gravity="left">
 
-            <ImageView
-                android:id="@+id/addReminder"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_margin="4dp"
-                android:background="@android:color/transparent"
-                android:src="@drawable/ic_action_new" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="4dp"
-                android:layout_toEndOf="@+id/addReminder"
-                android:layout_toRightOf="@+id/addReminder"
-                android:text="@string/addReminder"
-                android:textSize="20sp" />
-        </RelativeLayout>
-    -->
     <EditText
         android:id="@+id/editText2"
         android:layout_width="match_parent"
@@ -111,6 +74,29 @@
         android:hint="Subject"
         android:textSize="20sp" />
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageButton
+            android:id="@+id/save_button"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="end|bottom"
+            android:layout_marginBottom="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginRight="24dp"
+            android:background="@drawable/fab_background"
+            android:elevation="8dp"
+            android:onClick="save"
+            android:src="@drawable/ic_action_accept"
+            android:stateListAnimator="@anim/anim"
+            android:tint="@color/white" />
+
+    </RelativeLayout>
 
 </LinearLayout>
 <!-- From: file:/E:/Git/SmartAssignmentReminder/res/layout/activity_new_assignment.xml -->

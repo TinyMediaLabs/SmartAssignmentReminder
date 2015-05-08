@@ -91,7 +91,7 @@
     <eat-comment/>
     <color name="navy">#000080</color>
     <color name="olive">#808000</color>
-    <color name="orange">#ffffbb00</color>
+    <color name="orange">#ffffd300</color>
     <!-- From: file:/E:/Git/SmartAssignmentReminder/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/res/values/values.xml -->
     <eat-comment/>
     <color name="primary_dark_material_dark">#ff000000</color>
@@ -1144,6 +1144,11 @@
         <item name="colorPrimary">@color/yellow</item>
         <item name="colorPrimaryDark">@color/orange</item>
         <item name="colorAccent">@color/red</item>
+        <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
+    </style>
+    <style name="DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="spinBars">true</item>
+        <item name="color">@android:color/white</item>
     </style>
     <!-- From: file:/E:/Git/SmartAssignmentReminder/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/res/values/values.xml -->
     <eat-comment/>
