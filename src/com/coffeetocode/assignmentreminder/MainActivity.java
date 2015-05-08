@@ -23,7 +23,8 @@ import java.util.List;
 public class MainActivity extends ActionBarActivity {
 
     public final static int NEW_ASSIGNMENT_REQUEST = 1;
-    private static final int RESULT_SETTINGS = 1;
+    public final static int EDIT_ASSIGNMENT_REQUEST = 2;
+    private static final int RESULT_SETTINGS = 3;
     public List<Assignment> assignments = new ArrayList<Assignment>();
     DBHandler dbHandler = new DBHandler(this);
     Handler backgroundHandler;
@@ -57,7 +58,7 @@ public class MainActivity extends ActionBarActivity {
                 .getDefaultSharedPreferences(this);
 
         if (sharedPrefs.getBoolean("auto_delete", true)) {
-            deletePassedAssignments();
+            deleteExpiredAssignments();
         }
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -65,7 +66,7 @@ public class MainActivity extends ActionBarActivity {
         drawerToggle.syncState();
     }
 
-    public void deletePassedAssignments() {
+    public void deleteExpiredAssignments() {
         Calendar c = Calendar.getInstance();
         for (int i = 0; i < assignments.size(); i++) {
             if (c.compareTo(assignments.get(i).getDeadline()) == 1) {
@@ -117,6 +118,13 @@ public class MainActivity extends ActionBarActivity {
         }
         if (resultCode == RESULT_SETTINGS) {
             //all ok
+        }
+        if (requestCode == EDIT_ASSIGNMENT_REQUEST) {
+            // Make sure the request was successful
+            updateCards();
+            if (resultCode == RESULT_OK) {
+                // all ok
+            }
         }
     }
 

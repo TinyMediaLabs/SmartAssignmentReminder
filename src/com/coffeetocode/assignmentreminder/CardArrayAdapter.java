@@ -1,5 +1,6 @@
 package com.coffeetocode.assignmentreminder;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -108,7 +109,7 @@ public class CardArrayAdapter extends ArrayAdapter<Card> {
                 int pos = Integer.parseInt(v.getTag().toString());
                 Intent i = new Intent(context, EditAssignment.class);
                 i.putExtra("assignmentID", getItem(pos).getID());
-                context.startActivity(i);
+                ((Activity) context).startActivityForResult(i, MainActivity.EDIT_ASSIGNMENT_REQUEST);
             }
         });
 
