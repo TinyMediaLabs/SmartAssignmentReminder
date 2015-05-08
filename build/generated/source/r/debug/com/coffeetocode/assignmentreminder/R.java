@@ -1514,7 +1514,13 @@ containing a value of this type.
         public static final int hello_world=0x7f0c001f;
         public static final int newAssignment=0x7f0c0020;
         public static final int no=0x7f0c0021;
-        public static final int yes=0x7f0c0022;
+        public static final int pref_auto_delete=0x7f0c0022;
+        public static final int pref_auto_delete_summary=0x7f0c0023;
+        public static final int pref_auto_delete_title=0x7f0c0024;
+        public static final int pref_clear_data=0x7f0c0025;
+        public static final int pref_clear_data_summary=0x7f0c0026;
+        public static final int pref_clear_data_title=0x7f0c0027;
+        public static final int yes=0x7f0c0028;
     }
     public static final class style {
         public static final int Animation_AppCompat_DropDownUp=0x7f0d0000;

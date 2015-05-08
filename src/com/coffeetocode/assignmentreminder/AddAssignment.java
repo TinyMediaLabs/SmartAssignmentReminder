@@ -123,7 +123,7 @@ public class AddAssignment extends ActionBarActivity implements TimePickerDialog
                     c,
                     Subject.getText().toString(),
                     String.valueOf(difficulty),
-                    reminder));
+                    c));
             Toast.makeText(this, "Assignment saved", Toast.LENGTH_SHORT).show();
             this.finish();
         }

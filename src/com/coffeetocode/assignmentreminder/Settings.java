@@ -1,6 +1,7 @@
 package com.coffeetocode.assignmentreminder;
 
 import android.os.Bundle;
+import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
@@ -27,6 +28,14 @@ public class Settings extends ActionBarActivity {
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.settings);
+            Preference button = (Preference) findPreference(getString(R.string.pref_clear_data));
+            button.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+                    //DBHandler dbHandler = new DBHandler(this);
+                    return true;
+                }
+            });
         }
     }
 }

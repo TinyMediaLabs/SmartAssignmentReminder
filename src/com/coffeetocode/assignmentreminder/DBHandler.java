@@ -30,14 +30,6 @@ public class DBHandler extends SQLiteOpenHelper
     private static final String DIFFICULTY = "difficulty";
     private static final String REMINDER = "reminder";
 
-    //Cards table definition
-    private static final String CARDS_TABLE = "cards";
-    private static final String CARD_ID = "ID";
-    private static final String CARD_TITLE = "title";
-    private static final String CARD_DESCRIPTION = "description";
-    private static final String CARD_SUBJECT = "subject";
-
-
     public DBHandler(Context context)
     {
         super(context, DB_NAME, null, VERSION);
@@ -66,6 +58,11 @@ public class DBHandler extends SQLiteOpenHelper
     {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + ASSIGNMENTS_TABLE);
         onCreate(sqLiteDatabase);
+    }
+
+    public void deleteAssignmentsTable() {
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + ASSIGNMENTS_TABLE);
     }
 
     void addAssignment(Assignment assignment)
@@ -176,8 +173,7 @@ public class DBHandler extends SQLiteOpenHelper
     }
 
     public Calendar getCalendarObject(String string) {
-        String delims = "[-]+";
-        String[] reminderString = string.split(delims);
+        String[] reminderString = string.split("-");
         Calendar c = Calendar.getInstance();
         c.set(Calendar.YEAR, Integer.parseInt(reminderString[0]));
         c.set(Calendar.MONTH, Integer.parseInt(reminderString[1]));

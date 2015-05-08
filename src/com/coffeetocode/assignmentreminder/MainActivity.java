@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 @SuppressWarnings("deprecation")
@@ -52,9 +53,26 @@ public class MainActivity extends ActionBarActivity {
                 R.string.drawer_close);
         drawerLayout.setDrawerListener(drawerToggle);
 
+        SharedPreferences sharedPrefs = PreferenceManager
+                .getDefaultSharedPreferences(this);
+
+        if (sharedPrefs.getBoolean("auto_delete", true)) {
+            deletePassedAssignments();
+        }
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         drawerToggle.syncState();
+    }
+
+    public void deletePassedAssignments() {
+        Calendar c = Calendar.getInstance();
+        for (int i = 0; i < assignments.size(); i++) {
+            if (c.compareTo(assignments.get(i).getDeadline()) == 1) {
+                dbHandler.deleteAssignment(assignments.get(i).getID());
+            }
+        }
+        updateCards();
     }
 
     @Override
@@ -98,9 +116,7 @@ public class MainActivity extends ActionBarActivity {
             }
         }
         if (resultCode == RESULT_SETTINGS) {
-            SharedPreferences sharedPrefs = PreferenceManager
-                    .getDefaultSharedPreferences(this);
-
+            //all ok
         }
     }
 

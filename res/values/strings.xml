@@ -22,5 +22,11 @@
     <string name="difficulty">Difficulty</string>
     <string name="easy">Very easy</string>
     <string name="difficult">Very difficult</string>
+    <string name="pref_auto_delete">auto_delete</string>
+    <string name="pref_auto_delete_summary">Delete assignments after deadline has expired</string>
+    <string name="pref_auto_delete_title">Auto-delete</string>
+    <string name="pref_clear_data">clear_data</string>
+    <string name="pref_clear_data_summary">Delete all assignments</string>
+    <string name="pref_clear_data_title">Clear data</string>
 
 </resources>

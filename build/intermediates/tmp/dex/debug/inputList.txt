@@ -1,3 +1,3 @@
-E:\Git\SmartAssignmentReminder\build\intermediates\classes\debug
-E:\Git\SmartAssignmentReminder\build\intermediates\pre-dexed\debug\classes-b513d37b54f65e25b3e490d39a928acbb5d42a50.jar
-E:\Git\SmartAssignmentReminder\build\intermediates\pre-dexed\debug\android-support-v4-074982b0bfd843ac0efdb813d9ed319d3ecbbd62.jar
+C:\Users\Samsung\Documents\SmartAssignmentReminder\build\intermediates\classes\debug
+C:\Users\Samsung\Documents\SmartAssignmentReminder\build\intermediates\pre-dexed\debug\classes-54382845676bd7e8e11e470f8dc0faca0aa70e4c.jar
+C:\Users\Samsung\Documents\SmartAssignmentReminder\build\intermediates\pre-dexed\debug\android-support-v4-87329896657b9d0a2e9b960fa704b473b8fcd4d0.jar
