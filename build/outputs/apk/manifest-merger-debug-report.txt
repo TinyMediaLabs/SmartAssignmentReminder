@@ -57,3 +57,9 @@ ADDED from AndroidManifest.xml:29:9
 		ADDED from AndroidManifest.xml:31:13
 	android:name
 		ADDED from AndroidManifest.xml:30:13
+activity#com.coffeetocode.assignmentreminder.EditAssignment
+ADDED from AndroidManifest.xml:32:9
+	android:label
+		ADDED from AndroidManifest.xml:34:13
+	android:name
+		ADDED from AndroidManifest.xml:33:13

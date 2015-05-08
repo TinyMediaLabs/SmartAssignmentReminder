@@ -15,12 +15,5 @@
         sha1="d84409890828e07d344a3b9b1da545dba9897b51">
         <dex dex="E:\Git\SmartAssignmentReminder\build\intermediates\pre-dexed\debug\classes-b513d37b54f65e25b3e490d39a928acbb5d42a50.jar" />
     </item>
-    <item
-        jar="D:\Android\Workspace\AssignmentReminder\libs\android-support-v4.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="a13f8fe2c278737e2f0b6fcf00f6b2ae4034aacf">
-        <dex dex="D:\Android\Workspace\AssignmentReminder\build\intermediates\pre-dexed\debug\android-support-v4-cab8d194efca8b9cabd46ac2a015ce130db92a66.jar" />
-    </item>
 
 </items>

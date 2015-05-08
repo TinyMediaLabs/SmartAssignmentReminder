@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.SeekBar;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -25,12 +26,17 @@ import java.util.Locale;
 public class AddAssignment extends ActionBarActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
     Button timeDisplay;
     Button dateDisplay;
+
     EditText Description;
     EditText Title;
     EditText Subject;
+
     Calendar c = Calendar.getInstance();
     DBHandler dbHandler = new DBHandler(this);
-    // added a useless comment
+
+    SeekBar seekBar;
+    int difficulty = 0;
+
     public void showTimePickerDialog(View v) {
         TimePickerFragment newFragment = new TimePickerFragment();
         newFragment.setTime(c);
@@ -59,7 +65,6 @@ public class AddAssignment extends ActionBarActivity implements TimePickerDialog
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_assignment);
-
         timeDisplay = new Button(this);
         timeDisplay = (Button) findViewById(R.id.timeDisplay);
         dateDisplay = new Button(this);
@@ -67,8 +72,28 @@ public class AddAssignment extends ActionBarActivity implements TimePickerDialog
         Description = (EditText) findViewById(R.id.editText5);
         Title = (EditText) findViewById(R.id.editText);
         Subject = (EditText) findViewById(R.id.editText2);
+        seekBar = (SeekBar) findViewById(R.id.seekBar);
+
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progressValue, boolean fromUser) {
+                difficulty = progressValue;
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
+        });
+
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar1);
         setSupportActionBar(toolbar);
+
         updateTimeDateDisplay();
     }
 
@@ -87,6 +112,8 @@ public class AddAssignment extends ActionBarActivity implements TimePickerDialog
         updateTimeDateDisplay();
     }
 
+    // TODO: save difficulty (difficulty) and date (c) into the database
+    // TODO: rework the UNIX time
     public void addAssignment() {
         if (Title.getText().toString().isEmpty() && Description.getText().toString().isEmpty() &&
                 Subject.getText().toString().isEmpty()) {
@@ -96,7 +123,7 @@ public class AddAssignment extends ActionBarActivity implements TimePickerDialog
                     Description.getText().toString(),
                     c,
                     Subject.getText().toString(),
-                    /*difficulty*/,
+                    difficulty,
                     /*reminder*/));
             Toast.makeText(this, "Assignment saved", Toast.LENGTH_SHORT).show();
             this.finish();
@@ -107,6 +134,7 @@ public class AddAssignment extends ActionBarActivity implements TimePickerDialog
         addAssignment();
     }
 
+    // TODO: check for slider/date and time change
     @Override
     public void onBackPressed() {
         if (Title.getText().toString().isEmpty() && Description.getText().toString().isEmpty() &&

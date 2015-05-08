@@ -4,6 +4,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize" />
+
     <EditText
         android:id="@+id/editText"
         android:layout_width="match_parent"
@@ -33,25 +40,14 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <!--
-                <ImageButton
-                    android:id="@+id/deleteReminder"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_margin="4dp"
-                    android:background="@android:color/transparent"
-                    android:src="@drawable/ic_action_discard" />
-        -->
-        <Button
+
+    <Button
             android:id="@+id/dateDisplay"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="8dp"
-            android:layout_toEndOf="@+id/deleteReminder"
-            android:layout_toRightOf="@+id/deleteReminder"
             android:onClick="showDatePickerDialog"
             android:textSize="20sp" />
 
@@ -70,36 +66,7 @@
             android:textSize="20sp" />
 
     </RelativeLayout>
-    <!--
-        <RelativeLayout
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:focusable="true"
-            android:onClick="addReminder"
-            android:gravity="left">
 
-            <ImageView
-                android:id="@+id/addReminder"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_margin="4dp"
-                android:background="@android:color/transparent"
-                android:src="@drawable/ic_action_new" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="4dp"
-                android:layout_toEndOf="@+id/addReminder"
-                android:layout_toRightOf="@+id/addReminder"
-                android:text="@string/addReminder"
-                android:textSize="20sp" />
-        </RelativeLayout>
-    -->
     <EditText
         android:id="@+id/editText2"
         android:layout_width="match_parent"

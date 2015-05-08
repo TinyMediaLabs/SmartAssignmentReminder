@@ -16,5 +16,11 @@
 
 
     <string name="Settings">Settings</string>
+    <string name="edit_assignment">Edit assignment</string>
+    <string name="delete">Delete</string>
+    <string name="delete_description">Press to delete</string>
+    <string name="difficulty">Difficulty</string>
+    <string name="easy">Very easy</string>
+    <string name="difficult">Very difficult</string>
 
 </resources>

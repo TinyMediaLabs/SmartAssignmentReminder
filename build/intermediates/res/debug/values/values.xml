@@ -248,21 +248,17 @@
     <string name="addReminder">Add another reminder</string>
     <string name="app_name">Assignment Reminder</string>
     <string name="deadline">Deadline</string>
+    <string name="delete">Delete</string>
+    <string name="delete_description">Press to delete</string>
+    <string name="difficult">Very difficult</string>
+    <string name="difficulty">Difficulty</string>
     <string name="drawer_close">Close the sidebar</string>
     <string name="drawer_open">Open the sidebar</string>
+    <string name="easy">Very easy</string>
+    <string name="edit_assignment">Edit assignment</string>
     <string name="hello_world">Hello world!</string>
-    <string name="menu_settings">Settings</string>
     <string name="newAssignment">New assignment</string>
     <string name="no">No</string>
-    <string name="pref_send_report">Send crash reports</string>
-    <string name="pref_send_report_summary">Helps to fix bugs</string>
-    <string name="pref_sync_frequency">Sync frequency</string>
-    <string name="pref_sync_frequency_summary">Set the sync frequency</string>
-    <string name="pref_update_setting">Update Settings</string>
-    <string name="pref_user_name">Set username</string>
-    <string name="pref_user_name_summary">Set your username</string>
-    <string name="pref_user_profile">User Profile</string>
-    <string name="title_activity_main">MainActivity</string>
     <string name="yes">Yes</string>
     <!-- From: file:/E:/Git/SmartAssignmentReminder/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/res/values/values.xml -->
     <eat-comment/>
@@ -1139,7 +1135,7 @@
     <style name="CustomActionBar" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
         <item name="android:background">@color/orange</item>
     </style>
-    <style name="CustomActionBarTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="CustomTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!--<item name="android:actionBarStyle">@style/CustomActionBar</item>-->
         <item name="colorPrimary">@color/yellow</item>
         <item name="colorPrimaryDark">@color/orange</item>

@@ -7,7 +7,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 
@@ -25,10 +24,15 @@ public class DBHandler extends SQLiteOpenHelper
     private static final String ASSIGNMENT_ID           = "ID";
     private static final String ASSIGNMENT_TITLE        = "title";
     private static final String ASSIGNMENT_DESCRIPTION  = "description";
-    private static final String DEADLINE = "dueDate";
+    private static final String DUEDATE = "dueDate";
     private static final String SUBJECT                 = "subject";
-    private static final String DIFFICULTY = "difficulty";
-    private static final String REMINDER = "reminder";
+
+    //Cards table definition
+    private static final String CARDS_TABLE = "cards";
+    private static final String CARD_ID = "ID";
+    private static final String CARD_TITLE = "title";
+    private static final String CARD_DESCRIPTION = "description";
+    private static final String CARD_SUBJECT = "subject";
 
     public DBHandler(Context context)
     {

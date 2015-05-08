@@ -1,12 +1,14 @@
 package com.coffeetocode.assignmentreminder;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,9 +18,11 @@ import java.util.List;
 public class CardArrayAdapter extends ArrayAdapter<Card> {
     DBHandler dbHandler = new DBHandler(getContext());
     private List<Card> cardList = new ArrayList<Card>();
+    private Context context;
 
     public CardArrayAdapter(Context context, int textViewResourceId) {
         super(context, textViewResourceId);
+        this.context = context;
     }
 
     @Override
@@ -81,6 +85,19 @@ public class CardArrayAdapter extends ArrayAdapter<Card> {
                 CardArrayAdapter.this.notifyDataSetChanged();
             }
         });
+
+        RelativeLayout cardItem = (RelativeLayout) row.findViewById(R.id.card);
+        cardItem.setTag(position);
+        cardItem.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int pos = Integer.parseInt(v.getTag().toString());
+                Intent i = new Intent(context, EditAssignment.class);
+                i.putExtra("assignmentID", getItem(pos).getID());
+                context.startActivity(i);
+            }
+        });
+
         return row;
     }
 
