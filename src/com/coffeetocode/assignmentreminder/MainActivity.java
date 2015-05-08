@@ -10,7 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -120,9 +119,9 @@ public class MainActivity extends Activity {
     }
 
     // TODO: remove this function together with the sidebar's test button; add appropriate onClick function implementations for sidebar
-    public void doToast(View view) {
-        Toast.makeText(this, "Hello world", Toast.LENGTH_SHORT).show();
-        drawerLayout.closeDrawer(drawer);
+    public void openSettings(View view) {
+        Intent i = new Intent(this, Settings.class);
+        startActivity(i);
     }
 }
 
