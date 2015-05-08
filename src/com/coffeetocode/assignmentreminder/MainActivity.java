@@ -2,7 +2,9 @@ package com.coffeetocode.assignmentreminder;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Menu;
@@ -18,6 +20,7 @@ import java.util.List;
 public class MainActivity extends Activity {
 
     public final static int NEW_ASSIGNMENT_REQUEST = 1;
+    private static final int RESULT_SETTINGS = 1;
     public List<Assignment> assignments = new ArrayList<Assignment>();
     DBHandler dbHandler = new DBHandler(this);
     private DrawerLayout drawerLayout;
@@ -107,6 +110,11 @@ public class MainActivity extends Activity {
                 // all ok
             }
         }
+        if (resultCode == RESULT_SETTINGS) {
+            SharedPreferences sharedPrefs = PreferenceManager
+                    .getDefaultSharedPreferences(this);
+
+        }
     }
 
     public boolean onPrepareOptionsMenu(Menu menu) {
@@ -121,7 +129,7 @@ public class MainActivity extends Activity {
     // TODO: remove this function together with the sidebar's test button; add appropriate onClick function implementations for sidebar
     public void openSettings(View view) {
         Intent i = new Intent(this, Settings.class);
-        startActivity(i);
+        startActivityForResult(i, RESULT_SETTINGS);
     }
 }
 

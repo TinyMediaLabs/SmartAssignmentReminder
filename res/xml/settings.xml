@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/lib/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <PreferenceCategory android:title="Star Fantasia Basic Settings">
 
-    <CheckBoxPreference
-        android:defaultValue="true"
-        android:key="checkbox"
-        android:summary="Please remove music "
-        android:title="splash music" />
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="parent_explorer_preference"
+            android:summary="Explorer of our Galaxy"
+            android:title="Explorer" />
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="guide_preference"
+            android:summary="Guide explorers"
+            android:title="Guide" />
+
+    </PreferenceCategory>
+
 </PreferenceScreen>
