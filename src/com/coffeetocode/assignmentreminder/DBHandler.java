@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 
@@ -24,8 +25,10 @@ public class DBHandler extends SQLiteOpenHelper
     private static final String ASSIGNMENT_ID           = "ID";
     private static final String ASSIGNMENT_TITLE        = "title";
     private static final String ASSIGNMENT_DESCRIPTION  = "description";
-    private static final String DUEDATE = "dueDate";
+    private static final String DEADLINE = "deadline";
     private static final String SUBJECT                 = "subject";
+    private static final String DIFFICULTY = "difficulty";
+    private static final String REMINDER = "reminder";
 
     //Cards table definition
     private static final String CARDS_TABLE = "cards";
@@ -33,6 +36,7 @@ public class DBHandler extends SQLiteOpenHelper
     private static final String CARD_TITLE = "title";
     private static final String CARD_DESCRIPTION = "description";
     private static final String CARD_SUBJECT = "subject";
+
 
     public DBHandler(Context context)
     {
@@ -103,10 +107,10 @@ public class DBHandler extends SQLiteOpenHelper
                 cursor.getInt(0),                           //ASSIGNMENT_ID
                 cursor.getString(1),                        //ASSIGNMENT_TITLE
                 cursor.getString(2),                        //ASSIGNMENT_DESCRIPTION
-                getCalendarCalendar(cursor.getString(3)),   //DEADLINE
+                getCalendarObject(cursor.getString(3)),   //DEADLINE
                 cursor.getString(4),                        //SUBJECT
                 cursor.getString(5),                        //DIFFICULTY
-                getCalendarCalendar(cursor.getString(6))    //REMINDER
+                getCalendarObject(cursor.getString(6))    //REMINDER
         );
         return assignment;
 
@@ -130,10 +134,10 @@ public class DBHandler extends SQLiteOpenHelper
                         cursor.getInt(0),                           //ASSIGNMENT_ID
                         cursor.getString(1),                        //ASSIGNMENT_TITLE
                         cursor.getString(2),                        //ASSIGNMENT_DESCRIPTION
-                        getCalendarCalendar(cursor.getString(3)),   //DEADLINE
+                        getCalendarObject(cursor.getString(3)),   //DEADLINE
                         cursor.getString(4),                        //SUBJECT
                         cursor.getString(5),                        //DIFFICULTY
-                        getCalendarCalendar(cursor.getString(6))    //REMINDER
+                        getCalendarObject(cursor.getString(6))    //REMINDER
                 );
 
                 assignmentList.add(assignment);
@@ -171,7 +175,7 @@ public class DBHandler extends SQLiteOpenHelper
         return cursor.getCount();
     }
 
-    public Calendar getCalendarCalendar(String string) {
+    public Calendar getCalendarObject(String string) {
         String delims = "[-]+";
         String[] reminderString = string.split(delims);
         Calendar c = Calendar.getInstance();

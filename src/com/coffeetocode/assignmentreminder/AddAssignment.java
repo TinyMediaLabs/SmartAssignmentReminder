@@ -32,6 +32,7 @@ public class AddAssignment extends ActionBarActivity implements TimePickerDialog
     EditText Subject;
 
     Calendar c = Calendar.getInstance();
+    //Calendar reminder = Calendar.getInstance();
     DBHandler dbHandler = new DBHandler(this);
 
     SeekBar seekBar;
@@ -112,8 +113,6 @@ public class AddAssignment extends ActionBarActivity implements TimePickerDialog
         updateTimeDateDisplay();
     }
 
-    // TODO: save difficulty (difficulty) and date (c) into the database
-    // TODO: rework the UNIX time
     public void addAssignment() {
         if (Title.getText().toString().isEmpty() && Description.getText().toString().isEmpty() &&
                 Subject.getText().toString().isEmpty()) {
@@ -123,8 +122,8 @@ public class AddAssignment extends ActionBarActivity implements TimePickerDialog
                     Description.getText().toString(),
                     c,
                     Subject.getText().toString(),
-                    difficulty,
-                    /*reminder*/));
+                    String.valueOf(difficulty),
+                    reminder));
             Toast.makeText(this, "Assignment saved", Toast.LENGTH_SHORT).show();
             this.finish();
         }
