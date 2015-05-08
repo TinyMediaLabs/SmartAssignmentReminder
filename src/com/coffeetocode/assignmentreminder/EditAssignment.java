@@ -1,13 +1,18 @@
 package com.coffeetocode.assignmentreminder;
 
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.SeekBar;
+import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.util.Calendar;
 import java.util.Locale;
@@ -15,7 +20,7 @@ import java.util.Locale;
 /**
  * Created by Samsung on 4/17/2015.
  */
-public class EditAssignment extends ActionBarActivity {
+public class EditAssignment extends ActionBarActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
     Button timeDisplay;
     Button dateDisplay;
@@ -25,6 +30,8 @@ public class EditAssignment extends ActionBarActivity {
     EditText Subject;
 
     Calendar c = Calendar.getInstance();
+    Calendar reminder = Calendar.getInstance();
+
     DBHandler dbHandler = new DBHandler(this);
     Assignment assignment;
 
@@ -55,6 +62,21 @@ public class EditAssignment extends ActionBarActivity {
         timeDisplay.setText(String.format("%02d:%02d", c.get(Calendar.HOUR_OF_DAY), c.get(Calendar.MINUTE)));
     }
 
+    @Override
+    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+        c.set(Calendar.HOUR_OF_DAY, hourOfDay);
+        c.set(Calendar.MINUTE, minute);
+        updateTimeDateDisplay();
+    }
+
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int day) {
+        c.set(Calendar.YEAR, year);
+        c.set(Calendar.MONTH, month);
+        c.set(Calendar.DATE, day);
+        updateTimeDateDisplay();
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,13 +99,54 @@ public class EditAssignment extends ActionBarActivity {
         Subject = (EditText) findViewById(R.id.editText2);
         seekBar = (SeekBar) findViewById(R.id.seekBar);
 
-        // TODO: set time and date of the pickers here, taken from assignment.getDeadline()
-
+        difficulty = Integer.valueOf(assignment.getDifficulty());
         Description.setText(assignment.getDescription());
         Title.setText(assignment.getTitle());
         Subject.setText(assignment.getSubject());
 
+        seekBar.setProgress(difficulty);
 
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progressValue, boolean fromUser) {
+                difficulty = progressValue;
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
+        });
+
+        c = assignment.getDeadline();
+
+        updateTimeDateDisplay();
+
+    }
+
+    public void updateAssignment() {
+        if (Title.getText().toString() == assignment.getTitle() && Description.getText().toString() == assignment.getDescription() &&
+                Subject.getText().toString() == assignment.getSubject()) {
+            Toast.makeText(this, "No changes have been made", Toast.LENGTH_SHORT).show();
+            finish();
+        } else {
+            dbHandler.updateAssignment(new Assignment(assignment.getID(),
+                    Title.getText().toString(),
+                    Description.getText().toString(),
+                    c,
+                    Subject.getText().toString(),
+                    String.valueOf(difficulty),
+                    reminder));
+            Toast.makeText(this, "Assignment updated", Toast.LENGTH_SHORT).show();
+            this.finish();
+        }
+    }
+
+    public void save(View view) {
+        updateAssignment();
     }
 }
