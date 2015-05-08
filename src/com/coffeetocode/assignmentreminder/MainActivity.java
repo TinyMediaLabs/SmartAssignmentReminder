@@ -17,6 +17,7 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.List;
 
 @SuppressWarnings("deprecation")
@@ -105,6 +106,37 @@ public class MainActivity extends ActionBarActivity {
         cardArrayAdapter.clear();
         for (int i = 0; i < assignments.size(); i++)
             cardArrayAdapter.add(new Card(assignments.get(i).getID(), assignments.get(i).getTitle(), assignments.get(i).getDescription(), assignments.get(i).getSubject()));
+        SharedPreferences sharedPrefs = PreferenceManager
+                .getDefaultSharedPreferences(this);
+        if (sharedPrefs.getString("prefSortType", "Deadline").equals("Deadline")) {
+            int a = 0;
+            for (int i = 0; i < assignments.size() - 1; i++) {
+                a = i;
+                for (int j = i + 1; j < assignments.size(); j++) {
+                    if (assignments.get(a).getDeadline().compareTo(assignments.get(j).getDeadline()) == 1) {
+                        a = j;
+                    }
+                }
+                if (a != i) {
+                    Collections.swap(assignments, a, i);
+                }
+            }
+        } else {
+            if (sharedPrefs.getString("prefSortType", "Deadline").equals("Difficulty")) {
+                int a = 0;
+                for (int i = 0; i < assignments.size() - 1; i++) {
+                    a = i;
+                    for (int j = i + 1; j < assignments.size(); j++) {
+                        if (Integer.parseInt(assignments.get(a).getDifficulty()) > Integer.parseInt(assignments.get(j).getDifficulty())) {
+                            a = j;
+                        }
+                    }
+                    if (a != i) {
+                        Collections.swap(assignments, a, i);
+                    }
+                }
+            }
+        }
     }
 
     @Override
