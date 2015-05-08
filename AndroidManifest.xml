@@ -26,6 +26,9 @@
             android:name=".AddAssignment"
             android:label="@string/newAssignment" >
         </activity>
+        <activity
+            android:name=".Settings"
+            android:label="@string/Settings"></activity>
     </application>
 
 </manifest>

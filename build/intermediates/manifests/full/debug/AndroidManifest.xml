@@ -26,6 +26,9 @@
             android:name="com.coffeetocode.assignmentreminder.AddAssignment"
             android:label="@string/newAssignment" >
         </activity>
+        <activity
+            android:name="com.coffeetocode.assignmentreminder.Settings"
+            android:label="@string/Settings" />
     </application>
 
 </manifest>
