@@ -3,7 +3,7 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity" >
+    tools:context=".MainActivity">
 
     <FrameLayout
         android:id="@+id/content_frame"
@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         android:background="#ff3ccb31">
 
-    <ListView
+        <ListView
             android:id="@+id/cards_feed"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -35,25 +35,34 @@
         <!-- TODO: add sidebar elements here  -->
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:onClick="openSettings">
+            android:layout_height="wrap_content"
+            android:background="@drawable/sidebar_button_background"
+            android:onClick="openSettings"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp">
+
+            <TextView
+                android:id="@+id/settings_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="8dp"
+                android:text="Settings"
+                android:textSize="16sp" />
 
             <ImageButton
                 android:id="@+id/setting_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="8dp"
                 android:background="@android:color/transparent"
                 android:src="@drawable/ic_action_settings"
                 android:text="Settings" />
 
-            <Button
-                android:id="@+id/settings_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:background="?android:attr/selectableItemBackground"
-                android:text="Settings" />
+
         </RelativeLayout>
     </LinearLayout>
 
