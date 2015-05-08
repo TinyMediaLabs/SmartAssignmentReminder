@@ -107,20 +107,25 @@ public class AddAssignment extends ActionBarActivity implements TimePickerDialog
 
     @Override
     public void onBackPressed() {
-        new AlertDialog.Builder(this)
-                .setTitle("Save assignment?")
-                .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+        if (Title.getText().toString().isEmpty() && Description.getText().toString().isEmpty() &&
+                Subject.getText().toString().isEmpty()) {
+            AddAssignment.super.onBackPressed();
+        } else {
+            new AlertDialog.Builder(this)
+                    .setTitle("Save assignment?")
+                    .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
 
-                    public void onClick(DialogInterface arg0, int arg1) {
-                        addAssignment();
-                    }
-                })
-                .setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface arg0, int arg1) {
+                            addAssignment();
+                        }
+                    })
+                    .setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
 
-                    public void onClick(DialogInterface arg0, int arg1) {
-                        AddAssignment.super.onBackPressed();
-                    }
-                }).create().show();
+                        public void onClick(DialogInterface arg0, int arg1) {
+                            AddAssignment.super.onBackPressed();
+                        }
+                    }).create().show();
+        }
     }
 
     @Override
