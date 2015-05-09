@@ -64,7 +64,8 @@
         android:background="@color/white"
         android:choiceMode="singleChoice"
         android:divider="@android:color/transparent"
-        android:dividerHeight="16dp">
+        android:dividerHeight="16dp"
+        android:orientation="vertical">
         <!-- TODO: add sidebar elements here  -->
         <RelativeLayout
             android:layout_width="match_parent"
@@ -72,7 +73,7 @@
             android:background="@drawable/sidebar_button_background"
             android:onClick="openSettings"
             android:paddingBottom="8dp"
-            android:paddingTop="8dp">
+            android:paddingTop="16dp">
 
             <ImageButton
                 android:id="@+id/setting_button"
@@ -96,6 +97,36 @@
                 android:textSize="16sp" />
 
 
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/sidebar_button_background"
+            android:onClick="showInfoDialog"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp">
+
+            <ImageButton
+                android:id="@+id/info_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="8dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_action_about"
+                android:text="Settings" />
+
+            <TextView
+                android:id="@+id/info_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@id/info_button"
+                android:text="Information"
+                android:textSize="16sp" />
         </RelativeLayout>
     </LinearLayout>
 

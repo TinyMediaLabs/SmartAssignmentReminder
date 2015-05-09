@@ -64,7 +64,8 @@
         android:background="@color/white"
         android:choiceMode="singleChoice"
         android:divider="@android:color/transparent"
-        android:dividerHeight="16dp">
+        android:dividerHeight="16dp"
+        android:orientation="vertical">
         <!-- TODO: add sidebar elements here  -->
         <RelativeLayout
             android:layout_width="match_parent"

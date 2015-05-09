@@ -187,8 +187,8 @@ public class MainActivity extends ActionBarActivity {
     public void showInfoDialog(View view) {
         new AlertDialog.Builder(this)
                 .setTitle("Welcome")
-                .setMessage("This app was developed by Coffee to Code Studios to make your daily life easier. Have fun :)")
-                .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                .setMessage("This app was developed by Tiny Media Labs to make your daily life easier. Have fun :)")
+                .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int arg1) {
                         dialog.cancel();
                     }

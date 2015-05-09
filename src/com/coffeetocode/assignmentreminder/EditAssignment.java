@@ -1,7 +1,9 @@
 package com.coffeetocode.assignmentreminder;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -128,9 +130,34 @@ public class EditAssignment extends ActionBarActivity implements TimePickerDialo
 
     }
 
+    @Override
+    public void onBackPressed() {
+        if (Title.getText().toString().equals(assignment.getTitle()) && Description.getText().toString().equals(assignment.getDescription()) &&
+                Subject.getText().toString().equals(assignment.getSubject()) && difficulty == Integer.parseInt(assignment.getDifficulty().toString()) &&
+                c.compareTo(assignment.getDeadline()) == 0) {
+            EditAssignment.super.onBackPressed();
+        } else {
+            new AlertDialog.Builder(this)
+                    .setTitle("Save assignment?")
+                    .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+
+                        public void onClick(DialogInterface arg0, int arg1) {
+                            updateAssignment();
+                        }
+                    })
+                    .setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+
+                        public void onClick(DialogInterface arg0, int arg1) {
+                            EditAssignment.super.onBackPressed();
+                        }
+                    }).create().show();
+        }
+    }
+
     public void updateAssignment() {
-        if (Title.getText().toString() == assignment.getTitle() && Description.getText().toString() == assignment.getDescription() &&
-                Subject.getText().toString() == assignment.getSubject()) {
+        if (Title.getText().toString().equals(assignment.getTitle()) && Description.getText().toString().equals(assignment.getDescription()) &&
+                Subject.getText().toString().equals(assignment.getSubject()) && difficulty == Integer.parseInt(assignment.getDifficulty().toString()) &&
+                c.compareTo(assignment.getDeadline()) == 0) {
             Toast.makeText(this, "No changes have been made", Toast.LENGTH_SHORT).show();
             finish();
         } else {

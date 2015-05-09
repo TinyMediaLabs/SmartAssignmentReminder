@@ -30,5 +30,6 @@
     <string name="pref_clear_data_title">Clear data</string>
     <string name="pref_sort_type_summary">Sort assignments by criteria</string>
     <string name="pref_sort_type_title">Sort type</string>
+    <string name="ok">OK</string>
 
 </resources>

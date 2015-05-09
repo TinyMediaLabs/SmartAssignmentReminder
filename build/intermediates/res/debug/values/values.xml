@@ -2,17 +2,9 @@
 <resources>
     <!-- From: file:/E:/Git/SmartAssignmentReminder/res/values/arrays.xml -->
     <eat-comment/>
-    <string-array name="syncFrequency">
-        <item name="1">Once a day</item>
-        <item name="7">Once a week</item>
-        <item name="3">Once a year</item>
-        <item name="0">Never (Update manually)</item>
-    </string-array>
-    <string-array name="syncFrequencyValues">
-        <item name="1">1</item>
-        <item name="7">7</item>
-        <item name="30">30</item>
-        <item name="0">0</item>
+    <string-array name="sort_type">
+        <item>Deadline</item>
+        <item>Difficulty</item>
     </string-array>
     <!-- From: file:/E:/Git/SmartAssignmentReminder/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/res/values/values.xml -->
     <eat-comment/>
@@ -259,12 +251,16 @@
     <string name="hello_world">Hello world!</string>
     <string name="newAssignment">New assignment</string>
     <string name="no">No</string>
+    <string name="ok">OK</string>
     <string name="pref_auto_delete">auto_delete</string>
     <string name="pref_auto_delete_summary">Delete assignments after deadline has expired</string>
     <string name="pref_auto_delete_title">Auto-delete</string>
     <string name="pref_clear_data">clear_data</string>
     <string name="pref_clear_data_summary">Delete all assignments</string>
     <string name="pref_clear_data_title">Clear data</string>
+    <string name="pref_sort_type_summary">Sort assignments by criteria</string>
+    <string name="pref_sort_type_title">Sort type</string>
+    <string name="thanks">Thanks!</string>
     <string name="yes">Yes</string>
     <!-- From: file:/E:/Git/SmartAssignmentReminder/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/res/values/values.xml -->
     <eat-comment/>

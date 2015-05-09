@@ -187,4 +187,5 @@ public class DBHandler extends SQLiteOpenHelper
         c.set(Calendar.MINUTE, Integer.parseInt(reminderString[4]));
         return c;
     }
+
 }

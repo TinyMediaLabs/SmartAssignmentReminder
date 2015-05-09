@@ -134,7 +134,7 @@ public class AddAssignment extends ActionBarActivity implements TimePickerDialog
         addAssignment();
     }
 
-    // TODO: check for slider/date and time change
+
     @Override
     public void onBackPressed() {
         if (Title.getText().toString().isEmpty() && Description.getText().toString().isEmpty() &&
