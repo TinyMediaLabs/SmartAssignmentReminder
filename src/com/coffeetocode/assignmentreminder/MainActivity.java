@@ -1,5 +1,7 @@
 package com.coffeetocode.assignmentreminder;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -17,7 +19,6 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collections;
 import java.util.List;
 
 @SuppressWarnings("deprecation")
@@ -25,7 +26,7 @@ public class MainActivity extends ActionBarActivity {
 
     public final static int NEW_ASSIGNMENT_REQUEST = 1;
     public final static int EDIT_ASSIGNMENT_REQUEST = 2;
-    private static final int RESULT_SETTINGS = 3;
+    public final static int SETTINGS_REQUEST = 3;
     public List<Assignment> assignments = new ArrayList<Assignment>();
     DBHandler dbHandler = new DBHandler(this);
     Handler backgroundHandler;
@@ -105,34 +106,39 @@ public class MainActivity extends ActionBarActivity {
         assignments = dbHandler.getAllAssignments();
         cardArrayAdapter.clear();
         for (int i = 0; i < assignments.size(); i++)
-            cardArrayAdapter.add(new Card(assignments.get(i).getID(), assignments.get(i).getTitle(), assignments.get(i).getDescription(), assignments.get(i).getSubject()));
+            cardArrayAdapter.add(new Card(assignments.get(i).getID(),
+                    assignments.get(i).getTitle(),
+                    assignments.get(i).getDescription(),
+                    assignments.get(i).getSubject(),
+                    assignments.get(i).getDeadline(),
+                    assignments.get(i).getDifficulty()));
         SharedPreferences sharedPrefs = PreferenceManager
                 .getDefaultSharedPreferences(this);
         if (sharedPrefs.getString("prefSortType", "Deadline").equals("Deadline")) {
             int a = 0;
-            for (int i = 0; i < assignments.size() - 1; i++) {
+            for (int i = 0; i < cardArrayAdapter.getCount() - 1; i++) {
                 a = i;
-                for (int j = i + 1; j < assignments.size(); j++) {
-                    if (assignments.get(a).getDeadline().compareTo(assignments.get(j).getDeadline()) == 1) {
+                for (int j = i + 1; j < cardArrayAdapter.getCount(); j++) {
+                    if (cardArrayAdapter.getItem(a).getDeadline().compareTo(cardArrayAdapter.getItem(j).getDeadline()) == 1) {
                         a = j;
                     }
                 }
                 if (a != i) {
-                    Collections.swap(assignments, a, i);
+                    cardArrayAdapter.swapCards(a, i);
                 }
             }
         } else {
             if (sharedPrefs.getString("prefSortType", "Deadline").equals("Difficulty")) {
                 int a = 0;
-                for (int i = 0; i < assignments.size() - 1; i++) {
+                for (int i = 0; i < cardArrayAdapter.getCount() - 1; i++) {
                     a = i;
-                    for (int j = i + 1; j < assignments.size(); j++) {
-                        if (Integer.parseInt(assignments.get(a).getDifficulty()) > Integer.parseInt(assignments.get(j).getDifficulty())) {
+                    for (int j = i + 1; j < cardArrayAdapter.getCount(); j++) {
+                        if (Integer.parseInt(cardArrayAdapter.getItem(a).getDifficulty()) < Integer.parseInt(cardArrayAdapter.getItem(j).getDifficulty())) {
                             a = j;
                         }
                     }
                     if (a != i) {
-                        Collections.swap(assignments, a, i);
+                        cardArrayAdapter.swapCards(a, i);
                     }
                 }
             }
@@ -148,12 +154,16 @@ public class MainActivity extends ActionBarActivity {
                 // all ok
             }
         }
-        if (resultCode == RESULT_SETTINGS) {
-            //all ok
-        }
         if (requestCode == EDIT_ASSIGNMENT_REQUEST) {
             // Make sure the request was successful
             updateCards();
+            if (resultCode == RESULT_OK) {
+                // all ok
+            }
+        }
+        if (requestCode == SETTINGS_REQUEST) {
+            updateCards();
+            //Make sure the request was successful
             if (resultCode == RESULT_OK) {
                 // all ok
             }
@@ -171,7 +181,18 @@ public class MainActivity extends ActionBarActivity {
     public void openSettings(View view) {
         drawerLayout.closeDrawers();
         Intent i = new Intent(this, Settings.class);
-        startActivityForResult(i, RESULT_SETTINGS);
+        startActivityForResult(i, SETTINGS_REQUEST);
+    }
+
+    public void showInfoDialog(View view) {
+        new AlertDialog.Builder(this)
+                .setTitle("Welcome")
+                .setMessage("This app was developed by Coffee to Code Studios to make your daily life easier. Have fun :)")
+                .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int arg1) {
+                        dialog.cancel();
+                    }
+                }).create().show();
     }
 
     public void newAssignment(View view) {

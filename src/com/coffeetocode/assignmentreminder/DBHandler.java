@@ -60,9 +60,13 @@ public class DBHandler extends SQLiteOpenHelper
         onCreate(sqLiteDatabase);
     }
 
-    public void deleteAssignmentsTable() {
+    public void deleteAllAssignments() {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + ASSIGNMENTS_TABLE);
+        List<Assignment> assignmentList = new ArrayList<Assignment>();
+        assignmentList = getAllAssignments();
+        for (int i = 0; i < assignmentList.size(); i++) {
+            deleteAssignment(assignmentList.get(i).getID());
+        }
     }
 
     void addAssignment(Assignment assignment)
@@ -121,7 +125,8 @@ public class DBHandler extends SQLiteOpenHelper
 
         String selectQuery = "SELECT * FROM " + ASSIGNMENTS_TABLE;
 
-        Cursor cursor = db.rawQuery(selectQuery, null);
+        Cursor cursor;
+        cursor = db.rawQuery(selectQuery, null);
 
         if (cursor != null && cursor.moveToFirst())
         {

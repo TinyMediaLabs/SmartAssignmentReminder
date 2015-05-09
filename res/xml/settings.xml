@@ -17,7 +17,7 @@
         <ListPreference
             android:defaultValue="Deadline"
             android:entries="@array/sort_type"
-            android:entryvalues="@array/sort_type"
+            android:entryValues="@array/sort_type"
             android:key="prefSortType"
             android:summary="@string/pref_sort_type_summary"
             android:title="@string/pref_sort_type_title" />

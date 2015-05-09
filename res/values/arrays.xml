@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string-array name="sort_Type">
+    <string-array name="sort_type">
         <item>Deadline</item>
         <item>Difficulty</item>
     </string-array>
-
 
 </resources>

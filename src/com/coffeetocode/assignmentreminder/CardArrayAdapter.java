@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
@@ -44,6 +45,10 @@ public class CardArrayAdapter extends ArrayAdapter<Card> {
         dbHandler.deleteAssignment(cardList.get(index).getID());
         cardList.remove(index);
         Toast.makeText(getContext(), "Assignment deleted", Toast.LENGTH_SHORT).show();
+    }
+
+    public void swapCards(int i, int j) {
+        Collections.swap(this.cardList, i, j);
     }
 
     @Override
