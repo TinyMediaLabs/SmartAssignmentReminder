@@ -133,8 +133,7 @@ public class EditAssignment extends ActionBarActivity implements TimePickerDialo
     @Override
     public void onBackPressed() {
         if (Title.getText().toString().equals(assignment.getTitle()) && Description.getText().toString().equals(assignment.getDescription()) &&
-                Subject.getText().toString().equals(assignment.getSubject()) && difficulty == Integer.parseInt(assignment.getDifficulty().toString()) &&
-                c.compareTo(assignment.getDeadline()) == 0) {
+                Subject.getText().toString().equals(assignment.getSubject()) && difficulty == Integer.parseInt(assignment.getDifficulty().toString())) {
             EditAssignment.super.onBackPressed();
         } else {
             new AlertDialog.Builder(this)
@@ -156,8 +155,7 @@ public class EditAssignment extends ActionBarActivity implements TimePickerDialo
 
     public void updateAssignment() {
         if (Title.getText().toString().equals(assignment.getTitle()) && Description.getText().toString().equals(assignment.getDescription()) &&
-                Subject.getText().toString().equals(assignment.getSubject()) && difficulty == Integer.parseInt(assignment.getDifficulty().toString()) &&
-                c.compareTo(assignment.getDeadline()) == 0) {
+                Subject.getText().toString().equals(assignment.getSubject()) && difficulty == Integer.parseInt(assignment.getDifficulty().toString())) {
             Toast.makeText(this, "No changes have been made", Toast.LENGTH_SHORT).show();
             finish();
         } else {

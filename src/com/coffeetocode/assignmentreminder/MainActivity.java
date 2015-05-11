@@ -5,7 +5,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
@@ -29,7 +28,6 @@ public class MainActivity extends ActionBarActivity {
     public final static int SETTINGS_REQUEST = 3;
     public List<Assignment> assignments = new ArrayList<Assignment>();
     DBHandler dbHandler = new DBHandler(this);
-    Handler backgroundHandler;
     private DrawerLayout drawerLayout;
     private LinearLayout drawer;
     private ActionBarDrawerToggle drawerToggle;

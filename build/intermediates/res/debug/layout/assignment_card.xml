@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/title"
             android:layout_marginLeft="4dp"
-            android:textSize="18sp"/>
+            android:textSize="18sp" />
 
         <ImageButton
             android:id="@+id/delete_button"
@@ -55,11 +55,11 @@
                 android:id="@+id/subject"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:textStyle="italic"
                 android:layout_marginBottom="4dp"
+                android:layout_marginLeft="8dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginLeft="8dp" />
+                android:textSize="15sp"
+                android:textStyle="italic" />
 
             <RelativeLayout
                 android:id="@+id/deadline_display"
