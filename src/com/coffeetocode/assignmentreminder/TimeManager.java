@@ -11,11 +11,12 @@ import java.util.List;
 public class TimeManager {
 
     // TODO: implement a setting for this.
-    private static final int dayWorkLimit = 180;
+    private static final int workTimeLimits[] = new int[]{180, 180, 180, 180, 180, 360, 360};
     // TODO: implement a setting for this.
-    private static final int workTimes[] = new int[]{0, 15, 30, 60, 360, 1000};
+    private static final int workTimes[] = new int[]{0, 15, 30, 60, 180, 360};
     // how much time a day, MAX, can be used for work, in minutes
     DBHandler dbHandler;
+    List<Assignment> assignments;
     // worktimes for corresponding task difficulties 0-5
     private Context context;
 
@@ -43,14 +44,36 @@ public class TimeManager {
     }
 
     public void calculateReminders() {
+        // get today's date
         Calendar today = Calendar.getInstance();
 
-        List<Assignment> assignments = dbHandler.getAllAssignments();
+        // get all assignments
+        assignments = dbHandler.getAllAssignments();
 
-        for (int i = assignments.size() - 1; i >= 0; i--) {
-
+        // sort by deadline, ascending order?
+        // might help to switch to descending order for easier iterations
+        int a = 0;
+        for (int i = 0; i < assignments.size() - 1; i++) {
+            a = i;
+            for (int j = i + 1; j < assignments.size(); j++) {
+                if (assignments.get(a).getDeadline().compareTo(assignments.get(j).getDeadline()) == 1) {
+                    a = j;
+                }
+            }
+            if (a != i) {
+                // reworked swap
+                Assignment temp = assignments.get(a);
+                assignments.set(a, assignments.get(i));
+                assignments.set(i, temp);
+            }
         }
 
+
+
+    }
+
+    private class Task {
+        public Calendar date;
 
     }
 

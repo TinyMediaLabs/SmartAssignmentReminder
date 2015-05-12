@@ -121,11 +121,42 @@ public class CardArrayAdapter extends ArrayAdapter<Card> {
         return row;
     }
 
+    public void sortBy(String parameter) {
+        if (parameter.equals("Deadline")) {
+            int a = 0;
+            for (int i = 0; i < this.getCount() - 1; i++) {
+                a = i;
+                for (int j = i + 1; j < this.getCount(); j++) {
+                    if (this.getItem(a).getDeadline().compareTo(this.getItem(j).getDeadline()) == 1) {
+                        a = j;
+                    }
+                }
+                if (a != i) {
+                    this.swapCards(a, i);
+                }
+            }
+        } else {
+            if (parameter.equals("Difficulty")) {
+                int a = 0;
+                for (int i = 0; i < this.getCount() - 1; i++) {
+                    a = i;
+                    for (int j = i + 1; j < this.getCount(); j++) {
+                        if (Integer.parseInt(this.getItem(a).getDifficulty()) < Integer.parseInt(this.getItem(j).getDifficulty())) {
+                            a = j;
+                        }
+                    }
+                    if (a != i) {
+                        this.swapCards(a, i);
+                    }
+                }
+            }
+        }
+    }
+
     static class CardViewHolder {
         TextView title;
         TextView desc;
         TextView subject;
     }
-
 
 }

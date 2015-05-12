@@ -113,32 +113,10 @@ public class MainActivity extends ActionBarActivity {
         SharedPreferences sharedPrefs = PreferenceManager
                 .getDefaultSharedPreferences(this);
         if (sharedPrefs.getString("prefSortType", "Deadline").equals("Deadline")) {
-            int a = 0;
-            for (int i = 0; i < cardArrayAdapter.getCount() - 1; i++) {
-                a = i;
-                for (int j = i + 1; j < cardArrayAdapter.getCount(); j++) {
-                    if (cardArrayAdapter.getItem(a).getDeadline().compareTo(cardArrayAdapter.getItem(j).getDeadline()) == 1) {
-                        a = j;
-                    }
-                }
-                if (a != i) {
-                    cardArrayAdapter.swapCards(a, i);
-                }
-            }
+            cardArrayAdapter.sortBy("Deadline");
         } else {
             if (sharedPrefs.getString("prefSortType", "Deadline").equals("Difficulty")) {
-                int a = 0;
-                for (int i = 0; i < cardArrayAdapter.getCount() - 1; i++) {
-                    a = i;
-                    for (int j = i + 1; j < cardArrayAdapter.getCount(); j++) {
-                        if (Integer.parseInt(cardArrayAdapter.getItem(a).getDifficulty()) < Integer.parseInt(cardArrayAdapter.getItem(j).getDifficulty())) {
-                            a = j;
-                        }
-                    }
-                    if (a != i) {
-                        cardArrayAdapter.swapCards(a, i);
-                    }
-                }
+                cardArrayAdapter.sortBy("Difficulty");
             }
         }
     }
