@@ -39,6 +39,10 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        if (dbHandler.getDayCount() == 0) {
+            dbHandler.createDay(new Day(Calendar.getInstance(), null, 0));
+        }
+
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer = (LinearLayout) findViewById(R.id.left_drawer);
         cardFeed = (ListView) findViewById(R.id.cards_feed);

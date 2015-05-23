@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/E:/Git/SmartAssignmentReminder/res/values/arrays.xml -->
+    <!-- From: file:/C:/Users/Samsung/Documents/SmartAssignmentReminder/res/values/arrays.xml -->
     <eat-comment/>
     <string-array name="sort_type">
         <item>Deadline</item>
         <item>Difficulty</item>
     </string-array>
-    <!-- From: file:/E:/Git/SmartAssignmentReminder/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Samsung/Documents/SmartAssignmentReminder/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/res/values/values.xml -->
     <eat-comment/>
     <attr format="reference" name="drawerArrowStyle"/>
     <attr format="dimension" name="height"/>
@@ -24,20 +24,20 @@
     <color name="abc_search_url_text_selected">@android:color/black</color>
     <color name="accent_material_dark">@color/material_deep_teal_200</color>
     <color name="accent_material_light">@color/material_deep_teal_500</color>
-    <!-- From: file:/E:/Git/SmartAssignmentReminder/res/values/colors.xml -->
+    <!-- From: file:/C:/Users/Samsung/Documents/SmartAssignmentReminder/res/values/colors.xml -->
     <eat-comment/>
     <color name="aqua">#00FFFF</color>
-    <!-- From: file:/E:/Git/SmartAssignmentReminder/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Samsung/Documents/SmartAssignmentReminder/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/res/values/values.xml -->
     <eat-comment/>
     <color name="background_floating_material_dark">#ff424242</color>
     <color name="background_floating_material_light">#ffeeeeee</color>
     <color name="background_material_dark">#ff303030</color>
     <color name="background_material_light">#ffeeeeee</color>
-    <!-- From: file:/E:/Git/SmartAssignmentReminder/res/values/colors.xml -->
+    <!-- From: file:/C:/Users/Samsung/Documents/SmartAssignmentReminder/res/values/colors.xml -->
     <eat-comment/>
     <color name="black">#000000</color>
     <color name="blue">#0000FF</color>
-    <!-- From: file:/E:/Git/SmartAssignmentReminder/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Samsung/Documents/SmartAssignmentReminder/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/res/values/values.xml -->
     <eat-comment/>
     <color name="bright_foreground_disabled_material_dark">#80ffffff</color>
     <color name="bright_foreground_disabled_material_light">#80000000</color>
@@ -51,40 +51,40 @@
     <color name="dim_foreground_disabled_material_light">#80323232</color>
     <color name="dim_foreground_material_dark">#ffbebebe</color>
     <color name="dim_foreground_material_light">#ff323232</color>
-    <!-- From: file:/E:/Git/SmartAssignmentReminder/res/values/colors.xml -->
+    <!-- From: file:/C:/Users/Samsung/Documents/SmartAssignmentReminder/res/values/colors.xml -->
     <eat-comment/>
     <color name="fuchsia">#FF00FF</color>
     <color name="gray">#808080</color>
     <color name="green">#ff44b140</color>
-    <!-- From: file:/E:/Git/SmartAssignmentReminder/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Samsung/Documents/SmartAssignmentReminder/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/res/values/values.xml -->
     <eat-comment/>
     <color name="highlighted_text_material_dark">#6680cbc4</color>
     <color name="highlighted_text_material_light">#66009688</color>
     <color name="hint_foreground_material_dark">@color/bright_foreground_disabled_material_dark</color>
     <color name="hint_foreground_material_light">@color/bright_foreground_disabled_material_light</color>
-    <!-- From: file:/E:/Git/SmartAssignmentReminder/res/values/colors.xml -->
+    <!-- From: file:/C:/Users/Samsung/Documents/SmartAssignmentReminder/res/values/colors.xml -->
     <eat-comment/>
     <color name="lime">#00FF00</color>
-    <!-- From: file:/E:/Git/SmartAssignmentReminder/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Samsung/Documents/SmartAssignmentReminder/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/res/values/values.xml -->
     <eat-comment/>
     <color name="link_text_material_dark">@color/material_deep_teal_200</color>
     <color name="link_text_material_light">@color/material_deep_teal_500</color>
-    <!-- From: file:/E:/Git/SmartAssignmentReminder/res/values/colors.xml -->
+    <!-- From: file:/C:/Users/Samsung/Documents/SmartAssignmentReminder/res/values/colors.xml -->
     <eat-comment/>
     <color name="maroon">#800000</color>
-    <!-- From: file:/E:/Git/SmartAssignmentReminder/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Samsung/Documents/SmartAssignmentReminder/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/res/values/values.xml -->
     <eat-comment/>
     <color name="material_blue_grey_800">#ff37474f</color>
     <color name="material_blue_grey_900">#ff263238</color>
     <color name="material_blue_grey_950">#ff21272b</color>
     <color name="material_deep_teal_200">#ff80cbc4</color>
     <color name="material_deep_teal_500">#ff009688</color>
-    <!-- From: file:/E:/Git/SmartAssignmentReminder/res/values/colors.xml -->
+    <!-- From: file:/C:/Users/Samsung/Documents/SmartAssignmentReminder/res/values/colors.xml -->
     <eat-comment/>
     <color name="navy">#000080</color>
     <color name="olive">#808000</color>
     <color name="orange">#ffffd300</color>
-    <!-- From: file:/E:/Git/SmartAssignmentReminder/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Samsung/Documents/SmartAssignmentReminder/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/res/values/values.xml -->
     <eat-comment/>
     <color name="primary_dark_material_dark">#ff000000</color>
     <color name="primary_dark_material_light">#ff757575</color>
@@ -94,11 +94,11 @@
     <color name="primary_text_default_material_light">#de000000</color>
     <color name="primary_text_disabled_material_dark">#4Dffffff</color>
     <color name="primary_text_disabled_material_light">#39000000</color>
-    <!-- From: file:/E:/Git/SmartAssignmentReminder/res/values/colors.xml -->
+    <!-- From: file:/C:/Users/Samsung/Documents/SmartAssignmentReminder/res/values/colors.xml -->
     <eat-comment/>
     <color name="purple">#800080</color>
     <color name="red">#FF0000</color>
-    <!-- From: file:/E:/Git/SmartAssignmentReminder/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Samsung/Documents/SmartAssignmentReminder/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/res/values/values.xml -->
     <eat-comment/>
     <color name="ripple_material_dark">#40ffffff</color>
     <color name="ripple_material_light">#40000000</color>
@@ -106,14 +106,14 @@
     <color name="secondary_text_default_material_light">#8a000000</color>
     <color name="secondary_text_disabled_material_dark">#36ffffff</color>
     <color name="secondary_text_disabled_material_light">#24000000</color>
-    <!-- From: file:/E:/Git/SmartAssignmentReminder/res/values/colors.xml -->
+    <!-- From: file:/C:/Users/Samsung/Documents/SmartAssignmentReminder/res/values/colors.xml -->
     <eat-comment/>
     <color name="silver">#C0C0C0</color>
-    <!-- From: file:/E:/Git/SmartAssignmentReminder/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Samsung/Documents/SmartAssignmentReminder/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/res/values/values.xml -->
     <eat-comment/>
     <color name="switch_thumb_normal_material_dark">#ffbdbdbd</color>
     <color name="switch_thumb_normal_material_light">#fff1f1f1</color>
-    <!-- From: file:/E:/Git/SmartAssignmentReminder/res/values/colors.xml -->
+    <!-- From: file:/C:/Users/Samsung/Documents/SmartAssignmentReminder/res/values/colors.xml -->
     <eat-comment/>
     <color name="teal">#008080</color>
     <color name="white">#FFFFFF</color>
@@ -142,7 +142,7 @@
     <declare-styleable name="Toolbar"><attr format="reference" name="titleTextAppearance"/><attr format="reference" name="subtitleTextAppearance"/><attr name="title"/><attr name="subtitle"/><attr name="android:gravity"/><attr format="dimension" name="titleMargins"/><attr format="dimension" name="titleMarginStart"/><attr format="dimension" name="titleMarginEnd"/><attr format="dimension" name="titleMarginTop"/><attr format="dimension" name="titleMarginBottom"/><attr name="contentInsetStart"/><attr name="contentInsetEnd"/><attr name="contentInsetLeft"/><attr name="contentInsetRight"/><attr format="dimension" name="maxButtonHeight"/><attr format="reference" name="theme"/><attr format="reference" name="collapseIcon"/><attr format="string" name="collapseContentDescription"/><attr name="popupTheme"/><attr format="reference" name="navigationIcon"/><attr format="string" name="navigationContentDescription"/><attr name="android:minHeight"/></declare-styleable>
     <declare-styleable name="View"><attr format="dimension" name="paddingStart"/><attr format="dimension" name="paddingEnd"/><attr name="android:focusable"/></declare-styleable>
     <declare-styleable name="ViewStubCompat"><attr name="android:layout"/><attr name="android:inflatedId"/><attr name="android:id"/></declare-styleable>
-    <!-- From: file:/E:/Git/SmartAssignmentReminder/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Samsung/Documents/SmartAssignmentReminder/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/res/values/values.xml -->
     <eat-comment/>
     <dimen name="abc_action_bar_default_height_material">56dp</dimen>
     <dimen name="abc_action_bar_default_padding_material">4dp</dimen>
@@ -186,12 +186,12 @@
     <dimen name="abc_text_size_subtitle_material_toolbar">16dp</dimen>
     <dimen name="abc_text_size_title_material">20sp</dimen>
     <dimen name="abc_text_size_title_material_toolbar">20dp</dimen>
-    <!-- From: file:/E:/Git/SmartAssignmentReminder/res/values/dimens.xml -->
+    <!-- From: file:/C:/Users/Samsung/Documents/SmartAssignmentReminder/res/values/dimens.xml -->
     <eat-comment/>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_padding">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <!-- From: file:/E:/Git/SmartAssignmentReminder/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Samsung/Documents/SmartAssignmentReminder/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/res/values/values.xml -->
     <eat-comment/>
     <item name="dialog_fixed_height_major" type="dimen">80%</item>
     <item name="dialog_fixed_height_minor" type="dimen">100%</item>
@@ -211,10 +211,10 @@
     <integer name="abc_config_activityDefaultDur">220</integer>
     <integer name="abc_config_activityShortDur">150</integer>
     <integer name="abc_max_action_buttons">2</integer>
-    <!-- From: file:/E:/Git/SmartAssignmentReminder/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/Samsung/Documents/SmartAssignmentReminder/res/values/strings.xml -->
     <eat-comment/>
     <string name="Settings">Settings</string>
-    <!-- From: file:/E:/Git/SmartAssignmentReminder/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Samsung/Documents/SmartAssignmentReminder/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/res/values/values.xml -->
     <eat-comment/>
     <string name="abc_action_bar_home_description">Navigate home</string>
     <string name="abc_action_bar_home_description_format">%1$s, %2$s</string>
@@ -232,7 +232,7 @@
     <string name="abc_shareactionprovider_share_with">Share with</string>
     <string name="abc_shareactionprovider_share_with_application">Share with %s</string>
     <string name="abc_toolbar_collapse_description">Collapse</string>
-    <!-- From: file:/E:/Git/SmartAssignmentReminder/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/Samsung/Documents/SmartAssignmentReminder/res/values/strings.xml -->
     <eat-comment/>
     <string name="action_accept">Save</string>
     <string name="action_new">Add</string>
@@ -262,10 +262,10 @@
     <string name="pref_sort_type_title">Sort type</string>
     <string name="thanks">Thanks!</string>
     <string name="yes">Yes</string>
-    <!-- From: file:/E:/Git/SmartAssignmentReminder/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Samsung/Documents/SmartAssignmentReminder/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/res/values/values.xml -->
     <eat-comment/>
     <style name="Animation.AppCompat.DropDownUp" parent="Base.Animation.AppCompat.DropDownUp"/>
-    <!-- From: file:/E:/Git/SmartAssignmentReminder/res/values/styles.xml -->
+    <!-- From: file:/C:/Users/Samsung/Documents/SmartAssignmentReminder/res/values/styles.xml -->
     <eat-comment/>
     <style name="AppBaseTheme" parent="android:Theme.Light">
         <!--
@@ -277,7 +277,7 @@
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
-    <!-- From: file:/E:/Git/SmartAssignmentReminder/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Samsung/Documents/SmartAssignmentReminder/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/res/values/values.xml -->
     <eat-comment/>
     <style name="Base.Animation.AppCompat.DropDownUp" parent="android:Animation">
         <item name="android:windowEnterAnimation">@anim/abc_grow_fade_in_from_bottom</item>
@@ -1132,7 +1132,7 @@
         <item name="android:scaleType">center</item>
         <item name="android:background">?attr/selectableItemBackground</item>
     </style>
-    <!-- From: file:/E:/Git/SmartAssignmentReminder/res/values/themes.xml -->
+    <!-- From: file:/C:/Users/Samsung/Documents/SmartAssignmentReminder/res/values/themes.xml -->
     <eat-comment/>
     <style name="CustomActionBar" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
         <item name="android:background">@color/orange</item>
@@ -1148,7 +1148,7 @@
         <item name="spinBars">true</item>
         <item name="color">@android:color/white</item>
     </style>
-    <!-- From: file:/E:/Git/SmartAssignmentReminder/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Samsung/Documents/SmartAssignmentReminder/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/res/values/values.xml -->
     <eat-comment/>
     <style name="Platform.AppCompat" parent="android:Theme">
         <item name="android:windowNoTitle">true</item>

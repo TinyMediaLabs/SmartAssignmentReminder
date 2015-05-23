@@ -17,6 +17,7 @@ public class TimeManager {
     // how much time a day, MAX, can be used for work, in minutes
     DBHandler dbHandler;
     List<Assignment> assignments;
+    List<Day> days;
     // worktimes for corresponding task difficulties 0-5
     private Context context;
 
@@ -49,6 +50,7 @@ public class TimeManager {
 
         // get all assignments
         assignments = dbHandler.getAllAssignments();
+        days = dbHandler.getAllDays();
 
         // sort by deadline, ascending order?
         // might help to switch to descending order for easier iterations
@@ -58,18 +60,26 @@ public class TimeManager {
             for (int j = i + 1; j < assignments.size(); j++) {
                 if (assignments.get(a).getDeadline().compareTo(assignments.get(j).getDeadline()) == 1) {
                     a = j;
+                } else if (assignments.get(a).getDeadline().compareTo(assignments.get(j).getDeadline()) == 0) {
+                    if (assignments.get(a).getDifficulty() < assignments.get(j).getDifficulty()) {
+                        swapAssignments(assignments, a, j);
+                    }
                 }
             }
             if (a != i) {
                 // reworked swap
-                Assignment temp = assignments.get(a);
-                assignments.set(a, assignments.get(i));
-                assignments.set(i, temp);
+                swapAssignments(assignments, a, i);
             }
         }
 
 
 
+    }
+
+    public void swapAssignments(List<Assignment> assignments, int a, int i) {
+        Assignment temp = assignments.get(a);
+        assignments.set(a, assignments.get(i));
+        assignments.set(i, temp);
     }
 
     private class Task {

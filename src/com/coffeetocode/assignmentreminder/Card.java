@@ -8,9 +8,9 @@ public class Card {
     private String description;
     private String subject;
     private Calendar deadline;
-    private String difficulty;
+    private int difficulty;
 
-    public Card(int ID, String title, String description, String subject, Calendar deadline, String difficulty) {
+    public Card(int ID, String title, String description, String subject, Calendar deadline, int difficulty) {
         this.ID = ID;
         this.title = title;
         this.description = description;
@@ -59,11 +59,11 @@ public class Card {
         this.deadline = deadline;
     }
 
-    public String getDifficulty() {
+    public int getDifficulty() {
         return difficulty;
     }
 
-    public void setDifficulty(String difficulty) {
+    public void setDifficulty(int difficulty) {
         this.difficulty = difficulty;
     }
 }

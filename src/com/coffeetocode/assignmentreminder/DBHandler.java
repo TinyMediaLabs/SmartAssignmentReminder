@@ -30,6 +30,13 @@ public class DBHandler extends SQLiteOpenHelper
     private static final String DIFFICULTY = "difficulty";
     private static final String REMINDER = "reminder";
 
+    //Day table definition
+    private static final String DAY_TABLE = "day";
+    private static final String DAY_ID = "ID";
+    private static final String DAY_DATE = "date";
+    private static final String DAY_ASSIGNMENTS = "assignments";
+    private static final String DAY_BUSY = "busy";
+
     public DBHandler(Context context)
     {
         super(context, DB_NAME, null, VERSION);
@@ -46,17 +53,27 @@ public class DBHandler extends SQLiteOpenHelper
                 + ASSIGNMENT_DESCRIPTION + " TEXT,"
                 + DEADLINE + " TEXT,"
                 + SUBJECT + " TEXT,"
-                + DIFFICULTY + " TEXT,"
+                + DIFFICULTY + " INTEGER,"
                 + REMINDER + " TEXT"
+                + ")";
+        String CREATE_DAY_TABLE = "" +
+                "CREATE TABLE " + DAY_TABLE
+                + " ("
+                + DAY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + DAY_DATE + " TEXT,"
+                + DAY_ASSIGNMENTS + " TEXT,"
+                + DAY_BUSY + " INTEGER"
                 + ")";
 
         db.execSQL(CREATE_ASSIGNMENTS_TABLE);
+        db.execSQL(CREATE_DAY_TABLE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i2)
     {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + ASSIGNMENTS_TABLE);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + DAY_TABLE);
         onCreate(sqLiteDatabase);
     }
 
@@ -110,7 +127,7 @@ public class DBHandler extends SQLiteOpenHelper
                 cursor.getString(2),                        //ASSIGNMENT_DESCRIPTION
                 getCalendarObject(cursor.getString(3)),   //DEADLINE
                 cursor.getString(4),                        //SUBJECT
-                cursor.getString(5),                        //DIFFICULTY
+                cursor.getInt(5),                        //DIFFICULTY
                 getCalendarObject(cursor.getString(6))    //REMINDER
         );
         return assignment;
@@ -138,7 +155,7 @@ public class DBHandler extends SQLiteOpenHelper
                         cursor.getString(2),                        //ASSIGNMENT_DESCRIPTION
                         getCalendarObject(cursor.getString(3)),   //DEADLINE
                         cursor.getString(4),                        //SUBJECT
-                        cursor.getString(5),                        //DIFFICULTY
+                        cursor.getInt(5),                        //DIFFICULTY
                         getCalendarObject(cursor.getString(6))    //REMINDER
                 );
 
@@ -159,7 +176,7 @@ public class DBHandler extends SQLiteOpenHelper
         values.put(ASSIGNMENT_TITLE,       assignment.getTitle());
         values.put(ASSIGNMENT_DESCRIPTION, assignment.getDescription());
         values.put(DEADLINE, assignment.getCalendarString(assignment.getDeadline()));
-        values.put(SUBJECT,                assignment.getSubject());
+        values.put(SUBJECT, assignment.getSubject());
         values.put(DIFFICULTY, assignment.getDifficulty());
         values.put(REMINDER, assignment.getCalendarString(assignment.getReminder()));
 
@@ -175,6 +192,111 @@ public class DBHandler extends SQLiteOpenHelper
         Cursor cursor = db.rawQuery(countQuery, null);
 
         return cursor.getCount();
+    }
+
+    public void deleteAllDays() {
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        List<Day> dayList = new ArrayList<Day>();
+        dayList = getAllDays();
+        for (int i = 0; i < dayList.size(); i++) {
+            deleteDay(dayList.get(i).getID());
+        }
+    }
+
+    public void createDay(Day day) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(DAY_DATE, day.getDateString());
+        values.put(DAY_ASSIGNMENTS, day.getAssignmentsString());
+        values.put(DAY_BUSY, day.getBusy());
+
+        db.insert(DAY_TABLE, null, values);
+    }
+
+    public void deleteDay(int ID) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        db.delete(DAY_TABLE, DAY_ID + " = " + String.valueOf(ID), null);
+    }
+
+    public Day getDay(int id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(
+                DAY_TABLE,
+                new String[]{DAY_ID, DAY_DATE, DAY_ASSIGNMENTS, DAY_BUSY},
+                DAY_ID + " = " + String.valueOf(id),
+                null, null, null, null, null);
+        if (cursor != null) {
+            cursor.moveToFirst();
+        }
+        Day day = new Day(
+                cursor.getInt(0),                           //DAY_ID
+                getCalendarObject(cursor.getString(1)),     //DAY_DATE
+                getDayAssignments(cursor.getString(2)),     //DAY_ASSIGNMENTS
+                cursor.getInt(3)                            //DAY_BUSY
+        );
+        return day;
+
+    }
+
+    public List<Day> getAllDays() {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        List<Day> dayList = new ArrayList<Day>();
+
+        String selectQuery = "SELECT * FROM " + DAY_TABLE;
+
+        Cursor cursor;
+        cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor != null && cursor.moveToFirst()) {
+            do {
+                Day day = new Day(
+                        cursor.getInt(0),                           //DAY_ID
+                        getCalendarObject(cursor.getString(1)),     //DAY_DATE
+                        getDayAssignments(cursor.getString(2)),     //DAY_ASSIGNMENTS
+                        cursor.getInt(3)                            //DAY_BUSY
+                );
+
+                dayList.add(day);
+            }
+            while (cursor.moveToNext());
+        }
+
+        return dayList;
+
+    }
+
+    public int updateDay(Day day) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(DAY_DATE, day.getDateString());
+        values.put(DAY_ASSIGNMENTS, day.getAssignmentsString());
+        values.put(DAY_BUSY, day.getBusy());
+
+        return db.update(DAY_TABLE, values, DAY_ID + " = " + String.valueOf(day.getID()), null);
+    }
+
+    public int getDayCount() {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String countQuery = "SELECT * FROM " + DAY_TABLE;
+
+        Cursor cursor = db.rawQuery(countQuery, null);
+
+        return cursor.getCount();
+    }
+
+    public int[] getDayAssignments(String string) {
+        String[] assignmentString = string.split(",");
+        int[] assignments = new int[10];
+        for (int i = 0; i < assignmentString.length; i++) {
+            assignments[i] = Integer.getInteger(assignmentString[i]);
+        }
+        return assignments;
     }
 
     public Calendar getCalendarObject(String string) {

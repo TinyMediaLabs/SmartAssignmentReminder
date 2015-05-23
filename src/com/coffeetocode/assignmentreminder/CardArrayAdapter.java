@@ -141,7 +141,7 @@ public class CardArrayAdapter extends ArrayAdapter<Card> {
                 for (int i = 0; i < this.getCount() - 1; i++) {
                     a = i;
                     for (int j = i + 1; j < this.getCount(); j++) {
-                        if (Integer.parseInt(this.getItem(a).getDifficulty()) < Integer.parseInt(this.getItem(j).getDifficulty())) {
+                        if (this.getItem(a).getDifficulty() < this.getItem(j).getDifficulty()) {
                             a = j;
                         }
                     }

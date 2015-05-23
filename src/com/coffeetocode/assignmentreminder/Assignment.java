@@ -8,11 +8,11 @@ public class Assignment {
 	private String description;
     private Calendar deadline;
     private String subject;
-    private String difficulty;
+    private int difficulty;
     private Calendar reminder;
 
-    public Assignment(String title, String description, Calendar deadline, String subject, String difficulty, Calendar reminder) {
-		this.title = title;
+    public Assignment(String title, String description, Calendar deadline, String subject, int difficulty, Calendar reminder) {
+        this.title = title;
 		this.description = description;
         this.deadline = deadline;
         this.subject = subject;
@@ -20,7 +20,7 @@ public class Assignment {
         this.reminder = reminder;
     }
 
-    public Assignment(int id, String title, String description, Calendar deadline, String subject, String difficulty, Calendar reminder)
+    public Assignment(int id, String title, String description, Calendar deadline, String subject, int difficulty, Calendar reminder)
     {
         this.ID = id;
         this.title = title;
@@ -79,11 +79,11 @@ public class Assignment {
         this.deadline = deadline;
     }
 
-    public String getDifficulty() {
+    public int getDifficulty() {
         return difficulty;
     }
 
-    public void setDifficulty(String difficulty) {
+    public void setDifficulty(int difficulty) {
         this.difficulty = difficulty;
     }
 

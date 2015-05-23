@@ -18,6 +18,7 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
 
 /**
@@ -123,9 +124,19 @@ public class AddAssignment extends ActionBarActivity implements TimePickerDialog
                     Description.getText().toString(),
                     c,
                     Subject.getText().toString(),
-                    String.valueOf(difficulty),
+                    difficulty,
                     c));
+            List<Day> dayList = dbHandler.getAllDays();
+            if (dayList.get(dayList.size() - 1).getDate().compareTo(c) == -1) {
+                Calendar temporaryCalendar = dayList.get(dayList.size() - 1).getDate();
+                while (temporaryCalendar.compareTo(c) == -1) {
+                    temporaryCalendar.add(Calendar.DAY_OF_MONTH, 1);
+                    dbHandler.createDay(new Day(temporaryCalendar, null, 0));
+                }
+            }
+            //TODO:put all the assignments into days, check if there is enough time to do them
             Toast.makeText(this, "Assignment saved", Toast.LENGTH_SHORT).show();
+
             this.finish();
         }
     }
