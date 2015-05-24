@@ -8,17 +8,17 @@ import java.util.Calendar;
 public class Day {
     private int ID;
     private Calendar date;
-    private int[] assignments;
+    private String assignments;
     private int busy;
 
-    public Day(int ID, Calendar date, int[] assignments, int busy) {
+    public Day(int ID, Calendar date, String assignments, int busy) {
         this.ID = ID;
         this.date = date;
         this.assignments = assignments;
         this.busy = busy;
     }
 
-    public Day(Calendar date, int[] assignments, int busy) {
+    public Day(Calendar date, String assignments, int busy) {
         this.date = date;
         this.assignments = assignments;
         this.busy = busy;
@@ -40,11 +40,11 @@ public class Day {
         this.date = date;
     }
 
-    public int[] getAssignments() {
+    public String getAssignments() {
         return assignments;
     }
 
-    public void setAssignments(int[] assignments) {
+    public void setAssignments(String assignments) {
         this.assignments = assignments;
     }
 
@@ -56,12 +56,29 @@ public class Day {
         this.busy = busy;
     }
 
-    public String getAssignmentsString() {
-        String assignments = "";
-        for (int i = 0; i < this.assignments.length; i++) {
-            assignments += this.assignments[i] + ",";
+    public void addBusy(int busy) {
+        this.busy += busy;
+    }
+
+    public void addAssignment(int id) {
+        this.assignments += id + ",";
+    }
+
+    public int[] getAssignmentsArray() {
+        String[] assignmentString = this.assignments.split(",");
+        int[] assignments = new int[10];
+        for (int i = 0; i < assignmentString.length; i++) {
+            assignments[i] = Integer.getInteger(assignmentString[i]);
         }
         return assignments;
+    }
+
+    public void setAssignmentsInString(int[] assignments) {
+        String assignmentString = "";
+        for (int i = 0; i < assignments.length; i++) {
+            assignmentString += assignments[i] + ",";
+        }
+        this.assignments = assignmentString;
     }
 
     public String getDateString() {

@@ -208,7 +208,7 @@ public class DBHandler extends SQLiteOpenHelper
 
         ContentValues values = new ContentValues();
         values.put(DAY_DATE, day.getDateString());
-        values.put(DAY_ASSIGNMENTS, day.getAssignmentsString());
+        values.put(DAY_ASSIGNMENTS, day.getAssignments());
         values.put(DAY_BUSY, day.getBusy());
 
         db.insert(DAY_TABLE, null, values);
@@ -234,7 +234,7 @@ public class DBHandler extends SQLiteOpenHelper
         Day day = new Day(
                 cursor.getInt(0),                           //DAY_ID
                 getCalendarObject(cursor.getString(1)),     //DAY_DATE
-                getDayAssignments(cursor.getString(2)),     //DAY_ASSIGNMENTS
+                cursor.getString(2),                        //DAY_ASSIGNMENTS
                 cursor.getInt(3)                            //DAY_BUSY
         );
         return day;
@@ -256,7 +256,7 @@ public class DBHandler extends SQLiteOpenHelper
                 Day day = new Day(
                         cursor.getInt(0),                           //DAY_ID
                         getCalendarObject(cursor.getString(1)),     //DAY_DATE
-                        getDayAssignments(cursor.getString(2)),     //DAY_ASSIGNMENTS
+                        cursor.getString(2),                        //DAY_ASSIGNMENTS
                         cursor.getInt(3)                            //DAY_BUSY
                 );
 
@@ -274,7 +274,7 @@ public class DBHandler extends SQLiteOpenHelper
 
         ContentValues values = new ContentValues();
         values.put(DAY_DATE, day.getDateString());
-        values.put(DAY_ASSIGNMENTS, day.getAssignmentsString());
+        values.put(DAY_ASSIGNMENTS, day.getAssignments());
         values.put(DAY_BUSY, day.getBusy());
 
         return db.update(DAY_TABLE, values, DAY_ID + " = " + String.valueOf(day.getID()), null);

@@ -1,6 +1,7 @@
 package com.coffeetocode.assignmentreminder;
 
 import android.content.Context;
+import android.widget.Toast;
 
 import java.util.Calendar;
 import java.util.List;
@@ -17,7 +18,7 @@ public class TimeManager {
     // how much time a day, MAX, can be used for work, in minutes
     DBHandler dbHandler;
     List<Assignment> assignments;
-    List<Day> days;
+    List<Day> days = dbHandler.getAllDays();
     // worktimes for corresponding task difficulties 0-5
     private Context context;
 
@@ -72,11 +73,58 @@ public class TimeManager {
             }
         }
 
-
-
+        resetBusyTime();
+        putAssignmentsToTable();
+        checkTimeTable();
     }
 
-    public void swapAssignments(List<Assignment> assignments, int a, int i) {
+    private void checkTimeTable() {
+        for (int i = 0; i < days.size(); i++) {
+            int[] assignmentArray = days.get(i).getAssignmentsArray();
+            for (int j = 0; j < assignmentArray.length; j++) {
+                Assignment temporaryAssignment = dbHandler.getAssignment(assignmentArray[j]);
+                if (temporaryAssignment.getDeadline().compareTo(days.get(i).getDate()) != -1) {
+                    Toast.makeText(this.context, "Too much work", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
+    }
+
+    private void putAssignmentsToTable() {
+        int j = 0;
+        for (int i = 0; i < assignments.size(); i++) {
+            int time = workTimes[assignments.get(i).getDifficulty()];
+            if (time == 0) {
+                days.get(j).addAssignment(assignments.get(i).getID());
+            } else {
+                while (time != 0) {
+                    time = workTimes[assignments.get(i).getDifficulty()];
+                    if (time < workTimeLimits[days.get(j).getDate().DAY_OF_WEEK] - days.get(j).getBusy()) {
+                        days.get(j).addBusy(time);
+                        days.get(j).addAssignment(assignments.get(i).getID());
+                        time = 0;
+                    } else if (time > workTimeLimits[days.get(j).getDate().DAY_OF_WEEK] - days.get(j).getBusy()) {
+                        time -= workTimeLimits[days.get(j).getDate().DAY_OF_WEEK] - days.get(j).getBusy();
+                        days.get(j).setBusy(workTimeLimits[days.get(j).getDate().DAY_OF_WEEK]);
+                    }
+                    if (time != 0) {
+                        j += 1;
+                    }
+                }
+            }
+        }
+        for (int i = 0; i < days.size(); i++) {
+            dbHandler.updateDay(days.get(i));
+        }
+    }
+
+    private void resetBusyTime() {
+        for (int i = 0; i < days.size(); i++) {
+            days.get(i).setBusy(0);
+        }
+    }
+
+    private void swapAssignments(List<Assignment> assignments, int a, int i) {
         Assignment temp = assignments.get(a);
         assignments.set(a, assignments.get(i));
         assignments.set(i, temp);
