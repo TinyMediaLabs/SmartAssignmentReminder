@@ -85,7 +85,7 @@ public class EditAssignment extends ActionBarActivity implements TimePickerDialo
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_assignment_data);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar3);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.assignment_data_toolbar);
         setSupportActionBar(toolbar);
 
         Intent intent = getIntent();
@@ -96,8 +96,8 @@ public class EditAssignment extends ActionBarActivity implements TimePickerDialo
         timeDisplay = (Button) findViewById(R.id.timeDisplay);
         dateDisplay = new Button(this);
         dateDisplay = (Button) findViewById(R.id.dateDisplay);
-        Description = (EditText) findViewById(R.id.editText5);
-        Title = (EditText) findViewById(R.id.editText);
+        Description = (EditText) findViewById(R.id.descriptionEditText);
+        Title = (EditText) findViewById(R.id.titleEditText);
         Subject = (EditText) findViewById(R.id.editText2);
         seekBar = (SeekBar) findViewById(R.id.seekBar);
 

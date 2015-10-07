@@ -71,8 +71,8 @@ public class AddAssignment extends ActionBarActivity implements TimePickerDialog
         timeDisplay = (Button) findViewById(R.id.timeDisplay);
         dateDisplay = new Button(this);
         dateDisplay = (Button) findViewById(R.id.dateDisplay);
-        Description = (EditText) findViewById(R.id.editText5);
-        Title = (EditText) findViewById(R.id.editText);
+        Description = (EditText) findViewById(R.id.descriptionEditText);
+        Title = (EditText) findViewById(R.id.titleEditText);
         Subject = (EditText) findViewById(R.id.editText2);
         seekBar = (SeekBar) findViewById(R.id.seekBar);
 
@@ -94,7 +94,7 @@ public class AddAssignment extends ActionBarActivity implements TimePickerDialog
 
         reminder.setTimeInMillis(0);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar1);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.assignment_data_toolbar);
         setSupportActionBar(toolbar);
 
         updateTimeDateDisplay();
