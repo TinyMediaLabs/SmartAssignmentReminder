@@ -118,7 +118,7 @@ public class AddAssignment extends ActionBarActivity implements TimePickerDialog
     public void addAssignment() {
         if (Title.getText().toString().isEmpty() && Description.getText().toString().isEmpty() &&
                 Subject.getText().toString().isEmpty()) {
-            Toast.makeText(this, "Nothing is filled", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Nothing has changed", Toast.LENGTH_LONG).show();
         } else {
             dbHandler.addAssignment(new Assignment(Title.getText().toString(),
                     Description.getText().toString(),
