@@ -9,12 +9,13 @@ import android.preference.PreferenceManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -30,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private LinearLayout drawer;
     private ActionBarDrawerToggle drawerToggle;
-    private ListView cardFeed;
+    private RecyclerView cardFeed;
     private CardArrayAdapter cardArrayAdapter;
 
     @Override
@@ -44,12 +45,15 @@ public class MainActivity extends AppCompatActivity {
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer = (LinearLayout) findViewById(R.id.left_drawer);
-        cardFeed = (ListView) findViewById(R.id.cards_feed);
+        cardFeed = (RecyclerView) findViewById(R.id.cards_feed);
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        cardFeed.setLayoutManager(llm);
         cardArrayAdapter = new CardArrayAdapter(this, R.layout.assignment_card);
 
-        updateCards();
+        loadCards();
 
         cardFeed.setAdapter(cardArrayAdapter);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         drawerToggle = new ActionBarDrawerToggle(this, drawerLayout,
@@ -76,7 +80,6 @@ public class MainActivity extends AppCompatActivity {
                 dbHandler.deleteAssignment(assignments.get(i).getID());
             }
         }
-        updateCards();
     }
 
     @Override
@@ -102,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void updateCards() {
+    private void loadCards() {
 
         assignments = dbHandler.getAllAssignments();
         cardArrayAdapter.clear();
@@ -128,20 +131,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == NEW_ASSIGNMENT_REQUEST) {
             // Make sure the request was successful
-            updateCards();
+            loadCards();
             if (resultCode == RESULT_OK) {
                 // all ok
             }
         }
         if (requestCode == EDIT_ASSIGNMENT_REQUEST) {
             // Make sure the request was successful
-            updateCards();
+            loadCards();
             if (resultCode == RESULT_OK) {
                 // all ok
             }
         }
         if (requestCode == SETTINGS_REQUEST) {
-            updateCards();
+            loadCards();
             //Make sure the request was successful
             if (resultCode == RESULT_OK) {
                 // all ok

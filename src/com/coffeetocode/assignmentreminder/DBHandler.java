@@ -84,6 +84,7 @@ public class DBHandler extends SQLiteOpenHelper
         for (int i = 0; i < assignmentList.size(); i++) {
             deleteAssignment(assignmentList.get(i).getID());
         }
+        sqLiteDatabase.close();
     }
 
     void addAssignment(Assignment assignment)
@@ -99,6 +100,7 @@ public class DBHandler extends SQLiteOpenHelper
         values.put(REMINDER, assignment.getCalendarString(assignment.getReminder()));
 
         db.insert(ASSIGNMENTS_TABLE, null, values);
+        db.close();
     }
 
     void deleteAssignment(int ID)
@@ -106,6 +108,7 @@ public class DBHandler extends SQLiteOpenHelper
         SQLiteDatabase db = this.getWritableDatabase();
 
         db.delete(ASSIGNMENTS_TABLE, ASSIGNMENT_ID + " = " + String.valueOf(ID), null);
+        db.close();
     }
 
     public Assignment getAssignment(int id)
@@ -117,6 +120,8 @@ public class DBHandler extends SQLiteOpenHelper
                 new String[]{ASSIGNMENT_ID, ASSIGNMENT_TITLE, ASSIGNMENT_DESCRIPTION, DEADLINE, SUBJECT, DIFFICULTY, REMINDER},
                 ASSIGNMENT_ID + " = " + String.valueOf(id),
                 null, null, null, null, null);
+        if (cursor.getCount() == 0)
+            return null;
         if (cursor != null)
         {
             cursor.moveToFirst();
@@ -130,8 +135,8 @@ public class DBHandler extends SQLiteOpenHelper
                 cursor.getInt(5),                        //DIFFICULTY
                 getCalendarObject(cursor.getString(6))    //REMINDER
         );
+        db.close();
         return assignment;
-
     }
 
     public List<Assignment> getAllAssignments()
@@ -163,9 +168,8 @@ public class DBHandler extends SQLiteOpenHelper
             }
             while (cursor.moveToNext());
         }
-
+        db.close();
         return assignmentList;
-
     }
 
     public int updateAssignment(Assignment assignment)
@@ -180,7 +184,9 @@ public class DBHandler extends SQLiteOpenHelper
         values.put(DIFFICULTY, assignment.getDifficulty());
         values.put(REMINDER, assignment.getCalendarString(assignment.getReminder()));
 
-        return db.update(ASSIGNMENTS_TABLE, values, ASSIGNMENT_ID + " = " + String.valueOf(assignment.getID()), null);
+        int result = db.update(ASSIGNMENTS_TABLE, values, ASSIGNMENT_ID + " = " + String.valueOf(assignment.getID()), null);
+        db.close();
+        return result;
     }
 
     public int getAssignmentCount()
@@ -190,8 +196,9 @@ public class DBHandler extends SQLiteOpenHelper
         String countQuery = "SELECT * FROM " + ASSIGNMENTS_TABLE;
 
         Cursor cursor = db.rawQuery(countQuery, null);
-
-        return cursor.getCount();
+        int result = cursor.getCount();
+        db.close();
+        return result;
     }
 
     public void deleteAllDays() {
@@ -201,6 +208,7 @@ public class DBHandler extends SQLiteOpenHelper
         for (int i = 0; i < dayList.size(); i++) {
             deleteDay(dayList.get(i).getID());
         }
+        sqLiteDatabase.close();
     }
 
     public void createDay(Day day) {
@@ -218,6 +226,7 @@ public class DBHandler extends SQLiteOpenHelper
         SQLiteDatabase db = this.getWritableDatabase();
 
         db.delete(DAY_TABLE, DAY_ID + " = " + String.valueOf(ID), null);
+        db.close();
     }
 
     public Day getDay(int id) {
@@ -237,8 +246,8 @@ public class DBHandler extends SQLiteOpenHelper
                 cursor.getString(2),                        //DAY_ASSIGNMENTS
                 cursor.getInt(3)                            //DAY_BUSY
         );
+        db.close();
         return day;
-
     }
 
     public List<Day> getAllDays() {
@@ -264,9 +273,8 @@ public class DBHandler extends SQLiteOpenHelper
             }
             while (cursor.moveToNext());
         }
-
+        db.close();
         return dayList;
-
     }
 
     public int updateDay(Day day) {
@@ -277,7 +285,9 @@ public class DBHandler extends SQLiteOpenHelper
         values.put(DAY_ASSIGNMENTS, day.getAssignments());
         values.put(DAY_BUSY, day.getBusy());
 
-        return db.update(DAY_TABLE, values, DAY_ID + " = " + String.valueOf(day.getID()), null);
+        int result = db.update(DAY_TABLE, values, DAY_ID + " = " + String.valueOf(day.getID()), null);
+        db.close();
+        return result;
     }
 
     public int getDayCount() {
@@ -286,8 +296,9 @@ public class DBHandler extends SQLiteOpenHelper
         String countQuery = "SELECT * FROM " + DAY_TABLE;
 
         Cursor cursor = db.rawQuery(countQuery, null);
-
-        return cursor.getCount();
+        int result = cursor.getCount();
+        db.close();
+        return result;
     }
 
     public int[] getDayAssignments(String string) {

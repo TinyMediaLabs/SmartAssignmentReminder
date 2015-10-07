@@ -155,7 +155,7 @@ public class EditAssignment extends ActionBarActivity implements TimePickerDialo
 
     public void updateAssignment() {
         if (Title.getText().toString().equals(assignment.getTitle()) && Description.getText().toString().equals(assignment.getDescription()) &&
-                Subject.getText().toString().equals(assignment.getSubject()) && difficulty == assignment.getDifficulty()) {
+                Subject.getText().toString().equals(assignment.getSubject()) && difficulty == assignment.getDifficulty() && c.get(Calendar.DAY_OF_YEAR) == assignment.getDeadline().get(Calendar.DAY_OF_YEAR)) {
             Toast.makeText(this, "No changes have been made", Toast.LENGTH_SHORT).show();
             finish();
         } else {
