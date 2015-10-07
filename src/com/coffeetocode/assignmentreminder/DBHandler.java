@@ -79,12 +79,7 @@ public class DBHandler extends SQLiteOpenHelper
 
     public void deleteAllAssignments() {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
-        List<Assignment> assignmentList = new ArrayList<Assignment>();
-        assignmentList = getAllAssignments();
-        for (int i = 0; i < assignmentList.size(); i++) {
-            deleteAssignment(assignmentList.get(i).getID());
-        }
-        sqLiteDatabase.close();
+        sqLiteDatabase.delete(ASSIGNMENTS_TABLE, null, null);
     }
 
     void addAssignment(Assignment assignment)
