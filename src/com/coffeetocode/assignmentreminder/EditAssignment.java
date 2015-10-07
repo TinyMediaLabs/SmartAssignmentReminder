@@ -133,7 +133,7 @@ public class EditAssignment extends ActionBarActivity implements TimePickerDialo
     @Override
     public void onBackPressed() {
         if (Title.getText().toString().equals(assignment.getTitle()) && Description.getText().toString().equals(assignment.getDescription()) &&
-                Subject.getText().toString().equals(assignment.getSubject()) && difficulty == assignment.getDifficulty()) {
+                Subject.getText().toString().equals(assignment.getSubject()) && difficulty == assignment.getDifficulty() && c.get(Calendar.DAY_OF_YEAR) == assignment.getDeadline().get(Calendar.DAY_OF_YEAR)) {
             EditAssignment.super.onBackPressed();
         } else {
             new AlertDialog.Builder(this)
