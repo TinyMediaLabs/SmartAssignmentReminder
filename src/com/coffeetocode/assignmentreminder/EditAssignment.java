@@ -83,7 +83,7 @@ public class EditAssignment extends ActionBarActivity implements TimePickerDialo
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_assignment);
+        setContentView(R.layout.activity_assignment_data);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar3);
         setSupportActionBar(toolbar);

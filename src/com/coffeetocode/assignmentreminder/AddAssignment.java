@@ -66,7 +66,7 @@ public class AddAssignment extends ActionBarActivity implements TimePickerDialog
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_assignment);
+        setContentView(R.layout.activity_assignment_data);
         timeDisplay = new Button(this);
         timeDisplay = (Button) findViewById(R.id.timeDisplay);
         dateDisplay = new Button(this);
