@@ -76,13 +76,6 @@ public class MainActivity extends AppCompatActivity {
                 R.string.drawer_close);
         drawerLayout.setDrawerListener(drawerToggle);
 
-        SharedPreferences sharedPrefs = PreferenceManager
-                .getDefaultSharedPreferences(this);
-
-        if (sharedPrefs.getBoolean("auto_delete", true)) {
-            deleteExpiredAssignments();
-        }
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         drawerToggle.syncState();
@@ -139,6 +132,9 @@ public class MainActivity extends AppCompatActivity {
             if (sharedPrefs.getString("prefSortType", "Deadline").equals("Difficulty")) {
                 cardArrayAdapter.sortBy("Difficulty");
             }
+        }
+        if (sharedPrefs.getBoolean("auto_delete", true)) {
+            deleteExpiredAssignments();
         }
     }
 
